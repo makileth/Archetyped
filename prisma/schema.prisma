@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id              String   @id @default(cuid())
+
+  authorEmail     String
+  authorId        String
+  characterName   String?
+  concept         String?
+  height          String?
+  weight          String?
+  age             String?
+  race            String?
+  backstory       String?
+  motivation      String?
+  reasonToJoin    String?
+  ideal           String?
+  family          String?
+  playerPCs       String?
+  NPCs            String?
+  organisations   String?
+  description     String?
+  motherland      String?
+  fears           String?
+  habitsquirks    String?
+  voice           String?
+  deity           String?
+  conflict        String?
+  catchphrase     String?
+  secret          String?
+  backgroundColor String?
+  flaws           Json[] // Character's flaws
+  traits          Json[] // Character's traits
+  createdAt       DateTime @default(now()) // Date and time when the character was created
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isAdmin   Boolean  @default(false)
+  onboarded Boolean  @default(false)
+  username  String
+}
