@@ -1,6 +1,7 @@
+"use client";
 import { Label } from "@/components/ui/label";
-import { useUser } from "@clerk/nextjs";
-import { Link } from "lucide-react";
+
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ToolTip } from "../../../../../components/ui/ToolTip";
@@ -22,6 +23,8 @@ import {
   BackstoryTip,
   GoalsMotivationsTip,
 } from "../../../../../constants/index";
+import DeleteButton from "../../../../../components/ui/DeleteButton";
+import CharSheetButtons from "../../../../../components/ui/CharSheetButtons";
 
 type CharSheetInputs = {
   id: string;
@@ -53,7 +56,7 @@ type CharSheetInputs = {
   backgroundColor: string;
 };
 
-type BadgeType = {
+type BadgesType = {
   traits: [
     {
       title: string;
@@ -67,6 +70,11 @@ type BadgeType = {
     }
   ];
 };
+
+type ImageType = {
+  img: string;
+};
+
 const getData = async (id: string) => {
   const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
     cache: "no-store",
@@ -80,90 +88,99 @@ const getData = async (id: string) => {
 };
 
 const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
+  const router = useRouter();
+
   const singleCharacter: CharSheetInputs = await getData(params.id);
 
-  const Badges: BadgeType = await getData(params.id);
+  const Badges: BadgesType = await getData(params.id);
+
+  const charImage: ImageType = await getData(params.id);
 
   return (
     <>
-      <div className="flex w-full">
-        <Link
-          className="px-4 py-2 flex flex-row gap-2 text-black font-bold"
-          href="/menu"
-        >
-          <p className="hover:translate-x-[-3px] duration-300 transition">
-            &larr;{" "}
-          </p>{" "}
-          <p> Back</p>
-        </Link>
-      </div>
-
-      <div className="max-w-4xl md:py-36 lg:py-48 min-h-[100vh] mx-auto justify-center items-center">
+      <div className="max-w-4xl pt-[5rem] md:py-36 lg:py-48 min-h-[100vh] mx-auto justify-center items-center">
+        {/* <div className="md:flex w-full hidden">
+          <Link
+            className="px-4 py-2 flex flex-row gap-2 text-black font-bold"
+            href="/menu"
+          >
+            <p className="hover:translate-x-[-3px] duration-300 transition">
+              &larr;{" "}
+            </p>{" "}
+            <p> Back</p>
+          </Link>
+        </div> */}
         <div className="mx-auto max-w-4xl rounded-2xl shadow-2xl border-[1.5px] items-start justify-between flex flex-col md:flex-row">
           {/* Column 1 */}
 
           <div
-            className={`bg-[${singleCharacter.backgroundColor}] w-full md:w-1/3 py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-tr-[0px] md:rounded-l-xl md:mt-0 mt-[5rem]`}
+            className={`bg-${singleCharacter.backgroundColor} w-full md:w-1/3 py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-tr-[0px] md:rounded-l-xl `}
           >
             <h1 className="text-white text-2xl font-bold">Appearance</h1>
-            <div className="w-[250px] relative my-6 h-[250px] mx-auto flex items-center justify-center rounded-full bg-cover">
-              {singleCharacter.img ? (
-                  <img
-                    // TODO: change later
-                    src="/assets/test.png"
-                    alt="Character's picture"
-                    className="object-cover w-full h-full rounded-full "
-                  />
-                ) : (
-                  <Image
-                    src={'/assets/default-char-picture.png'}
-                    width={125}
-                    height={125}
-                    className="object-cover w-full h-full rounded-full "
-                    alt="Default Character's picture"
-                  />)}
+            <div className="md:w-[250px] relative my-6 md:h-[250px] mx-auto flex items-center justify-center rounded-full bg-cover">
+              {charImage.img ? (
+                <img
+                  // TODO: change later
+                  src={charImage.img}
+                  alt="Character's picture"
+                  className="object-cover w-full h-full rounded-full "
+                />
+              ) : (
+                <Image
+                  src={"/assets/default-char-picture.png"}
+                  width={125}
+                  height={125}
+                  className="object-cover w-full h-full rounded-full "
+                  alt="Default Character's picture"
+                />
+              )}
             </div>
-            <h1 className=" mb-2 text-center text-lg font-bold text-black">
+            <h1 className=" mb-2 text-center text-lg font-bold text-white">
               {singleCharacter.characterName}
             </h1>
             <hr />
             <div className="px-12 flex flex-row w-full h-max">
               <div className="flex flex-row items-center justify-around mx-auto gap-12 w-full my-3">
                 <div className="flex flex-col text-md items-center justify-between">
-                  <h4 className="font-semibold py-2">Race</h4>
-                  <h4 className="font-semibold py-2">Height</h4>
-                  <h4 className="font-semibold py-2">Weight</h4>
-                  <h4 className="font-semibold py-2">Age</h4>
+                  <h4 className="font-semibold py-2 text-white">Race</h4>
+                  <h4 className="font-semibold py-2 text-white">Height</h4>
+                  <h4 className="font-semibold py-2 text-white">Weight</h4>
+                  <h4 className="font-semibold py-2 text-white">Age</h4>
                 </div>
                 <div className="flex flex-col text-md items-center justify-between">
-                  <p className="focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-black">
+                  <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.race}
                   </p>
-                  <p className="focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-black">
+                  <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.weight}
                   </p>
-                  <p className="focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-black">
+                  <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.height}
                   </p>
-                  <p className="focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-black">
+                  <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.age}
                   </p>
                 </div>
               </div>
             </div>
             <hr />
-            <div className="flex flex-col w-full justify-around items-start">
-              <h1 className="text-start font-bold py-3 ml-6">Description:</h1>
-              <p className=" ml-6" style={{ resize: "none" }}>
+            <div className="flex flex-col w-full h-full justify-around items-start">
+              <h1 className="text-start text-white font-bold py-3 ml-3">
+                Description:
+              </h1>
+              <p
+                className="ml-3 mb-3 h-[20rem] md:h-[31.5rem] text-white overflow-y-auto"
+                style={{ resize: "none" }}
+              >
                 {singleCharacter.description}
               </p>
             </div>
           </div>
 
           <div className="flex flex-col w-full h-full">
-            <div className="flex flex-row w-full h-full">
+            <div className="flex md:flex-row flex-col w-full h-full">
               {/* Column 2 */}
-              <div className="w-full md:w-1/2 justify-start bg-white py-2 md:py-4 h-full p-4 flex flex-col md:mt-0 mt-[5rem]">
+              <div className="w-full md:w-1/2 justify-start bg-white py-2 md:py-4 h-full p-4 flex flex-col md:mt-0 mt-[1.5rem]">
                 <h1 className="text-black text-2xl font-bold">Personality</h1>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
@@ -173,10 +190,9 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={CharacterConceptTip} />
                   </div>
 
-                  <div className="rounded-full py-1 px-4 bg-transparent border-neutral-400 border-[2px] text-black">
-                    <p>{singleCharacter.concept}</p>
+                  <div className="text-[12px] rounded-full py-1.5 px-3 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <p className="truncate">{singleCharacter.concept}</p>
                   </div>
-
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
@@ -191,13 +207,12 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       Badges.traits.map((tr) => (
                         <div
                           key={tr.title}
-                          className={`rounded-full bg-${tr.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-sm leading-5 truncate`}
+                          className={`rounded-full bg-${tr.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-[12px]  leading-5 truncate`}
                           aria-label="badge text"
                         >
                           <span className="inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
                             {tr.title}
                           </span>
-                          <div className="absolute right-0 w-6 h-full bg-gradient-to-l from-transparent to-white"></div>
                         </div>
                       ))}
                   </div>
@@ -215,13 +230,12 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       Badges.flaws.map((fl) => (
                         <div
                           key={fl.title}
-                          className={`rounded-full bg-${fl.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-sm leading-5 truncate`}
+                          className={`rounded-full bg-${fl.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-[12px]  leading-5 truncate`}
                           aria-label="badge text"
                         >
                           <span className="inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
                             {fl.title}
                           </span>
-                          <div className="absolute right-0 w-6 h-full bg-gradient-to-l from-transparent to-white"></div>
                         </div>
                       ))}
                   </div>
@@ -235,7 +249,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                         <ToolTip content={VoiceTip} />
                       </div>
 
-                      <div>
+                      <div className="px-4 py-2 text-[12px] capitalize  bg-transparent border-[1px] border-neutral-400 rounded-[10px]">
                         <p>{singleCharacter.voice}</p>
                       </div>
                     </div>
@@ -247,7 +261,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                         <ToolTip content={DeityTip} />
                       </div>
 
-                      <div>
+                      <div className="px-4 py-2 text-[12px] capitalize bg-transparent border-[1px] border-neutral-400 rounded-[10px]">
                         <p>{singleCharacter.deity}</p>
                       </div>
                     </div>
@@ -260,8 +274,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={CatchPhraseTip} />
                     </div>
 
-                    <div className="rounded-full border-gray-400 focus:outline-none">
-                      <p>{singleCharacter.catchphrase}</p>
+                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="truncate">{singleCharacter.catchphrase}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
@@ -272,8 +286,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={HabitsQuirksTip} />
                     </div>
 
-                    <div className="rounded-full border-gray-400 focus:outline-none">
-                      <p>{singleCharacter.habitsquirks}</p>
+                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="truncate">{singleCharacter.habitsquirks}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -284,8 +298,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={FearsTip} />
                     </div>
 
-                    <div className="rounded-full border-gray-400 focus:outline-none">
-                      <p>{singleCharacter.fears}</p>
+                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="truncate">{singleCharacter.fears}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -296,8 +310,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={SecretTip} />
                     </div>
 
-                    <div className="rounded-full border-gray-400 focus:outline-none">
-                      <p>{singleCharacter.ideal}</p>
+                    <div className="text-[12px] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="truncate">{singleCharacter.ideal}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -308,15 +322,16 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={SecretTip} />
                     </div>
 
-                    <div className="rounded-full border-gray-400 focus:outline-none">
-                      <p>{singleCharacter.secret}</p>
+                    <div className="text-[12px] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="truncate">{singleCharacter.secret}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Column 3 */}
-              <div className="w-full md:w-1/2 bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl md:mt-0 mt-[5rem]">
+              <div className="w-full md:w-1/2 bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl]">
+                <hr className="mb-[0.75rem] md:hidden block" />
                 <h1 className="text-black text-2xl font-bold">Backstory</h1>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
@@ -325,8 +340,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
                   </div>
 
-                  <div className="rounded-full border-gray-400 focus:outline-none">
-                    <p>{singleCharacter.motherland}</p>
+                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <p className="truncate">{singleCharacter.motherland}</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -337,8 +352,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={ConflictTip} />
                   </div>
 
-                  <div className="rounded-full border-gray-400 focus:outline-none">
-                    <p>{singleCharacter.conflict}</p>
+                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <p className="truncate">{singleCharacter.conflict}</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -349,21 +364,23 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={BackstoryTip} />
                   </div>
 
-                  <p className="rounded-[15px] border-[1px] h-[18.3rem] px-3 py-2 border-gray-400  text-[12px] text-black">
-                    {singleCharacter.backstory}
-                  </p>
+                  <div className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <p className="h-[14.8rem] overflow-y-auto">
+                      {singleCharacter.backstory}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-black">
                       💫 My Goals & Motivations
                     </Label>
                     <ToolTip content={GoalsMotivationsTip} />
                   </div>
 
                   <p
-                    className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-black"
+                    className=" h-[5rem] overflow-y-auto rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-black"
                     style={{ resize: "none" }}
                   >
                     {singleCharacter.motivation}
@@ -378,29 +395,29 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={SecretTip} />
                   </div>
 
-                  <div className="rounded-full border-gray-400 focus:outline-none">
+                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
                     <p>{singleCharacter.reasonToJoin}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-full  bg-white  h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl md:mt-0 mt-[5rem]">
+            <div className="w-full  bg-white  h-full p-4 flex flex-col rounded-t-xl md:rounded-r-xl">
+              <hr className="md:hidden block mb-[0.75rem]" />
               <h1 className="text-black text-2xl pb-2 font-bold">
                 Relationships
               </h1>
-              <hr />
-              <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+              <hr className="md:block hidden " />
+              <div className="flex flex-col md:flex-row items-center md:gap-8 justify-between">
                 <div className="flex flex-col py-2 w-full md:w-1/2">
                   <div className="flex  flex-col gap-2 py-2">
                     <Label htmlFor="header" className="text-black ">
                       👨‍👩‍👧‍👦 Family
                     </Label>
 
-                    <div
-                      className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black"
-                      style={{ resize: "none" }}
-                    >
-                      <p>{singleCharacter.family}</p>
+                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                      <p className="max-h-[8rem] overflow-y-auto">
+                        {singleCharacter.family}
+                      </p>
                     </div>
                   </div>
                   <div className="flex  flex-col gap-2 py-2">
@@ -408,11 +425,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       🧑‍🤝‍🧑 NPCs
                     </Label>
 
-                    <div
-                      className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black"
-                      style={{ resize: "none" }}
-                    >
-                      <p>{singleCharacter.NPCs}</p>
+                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                      <p className="max-h-[8rem] overflow-y-auto">
+                        {singleCharacter.NPCs}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -422,11 +438,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       👯 PCs
                     </Label>
 
-                    <div
-                      className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black"
-                      style={{ resize: "none" }}
-                    >
-                      <p>{singleCharacter.playerPCs}</p>
+                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                      <p className="max-h-[8rem] overflow-y-auto">
+                        {singleCharacter.playerPCs}
+                      </p>
                     </div>
                   </div>
                   <div className="flex  flex-col gap-2 py-2">
@@ -434,11 +449,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       🚩 Organisations
                     </Label>
 
-                    <div
-                      className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black"
-                      style={{ resize: "none" }}
-                    >
-                      <p>{singleCharacter.organisations}</p>
+                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                      <p className="max-h-[8rem] overflow-y-auto">
+                        {singleCharacter.organisations}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -446,6 +460,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
+        <CharSheetButtons charId={singleCharacter.id} />
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Topbar from "../../components/shared/Topbar";
 import Footer from "../../components/shared/Footer";
 import QueryProvider from "../../components/other/QueryProvider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata = {
   title: "CharacterVerse",
@@ -21,19 +22,33 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <QueryProvider>
-        <html lang="en">
-          <body className={inter.className}>
+      <html lang="en">
+        <body className={inter.className}>
+          <QueryProvider>
             <div className="bg-white">
               <Topbar />
 
               {children}
 
               <Footer />
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
+
+             
             </div>
-          </body>
-        </html>
-      </QueryProvider>
+          </QueryProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

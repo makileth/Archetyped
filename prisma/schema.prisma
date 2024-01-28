@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,36 +9,36 @@ datasource db {
 
 model Character {
   id              String   @id @default(cuid())
-
-  authorEmail     String
   authorId        String
+  authorEmail     String
+  img             String?
   characterName   String?
   concept         String?
-  height          String?
-  weight          String?
-  age             String?
-  race            String?
   backstory       String?
   motivation      String?
   reasonToJoin    String?
-  ideal           String?
   family          String?
   playerPCs       String?
-  NPCs            String?
-  organisations   String?
-  description     String?
   motherland      String?
+  createdAt       DateTime @default(now())
+  NPCs            String?
+  age             String?
+  catchphrase     String?
+  conflict        String?
+  deity           String?
   fears           String?
   habitsquirks    String?
-  voice           String?
-  deity           String?
-  conflict        String?
-  catchphrase     String?
+  height          String?
+  organisations   String?
+  race            String?
   secret          String?
+  voice           String?
+  weight          String?
   backgroundColor String?
-  flaws           Json[] // Character's flaws
-  traits          Json[] // Character's traits
-  createdAt       DateTime @default(now()) // Date and time when the character was created
+  ideal           String?
+  description     String?
+  traits          Json[]
+  flaws           Json[]
 }
 
 model User {

@@ -7,7 +7,7 @@ const GetStarted = () => {
   const router = useRouter();
 
   return (
-   <button onClick={() => {router.push('/menu')}} className="btn ">
+   <button onClick={() => {router.push('/menu')}} className="btn z-[30]">
     <div className="btn__bg">
       <span className="btn__bg__layer btn__bg__layer-first"></span>
       <span className="btn__bg__layer btn__bg__layer-second"></span>

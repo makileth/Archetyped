@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        around: "0 6px 30px 0 rgba(0, 0, 0, 0.19)", 
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

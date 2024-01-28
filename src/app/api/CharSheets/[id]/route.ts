@@ -26,48 +26,61 @@ export const GET = async (
   }
 };
 
-// export const DELETE = async (
-//   req: NextRequest,
-//   { params }: { params: { id: string } }
-// ) => {
+export const DELETE = async (
+  req: NextRequest,
 
-//   const { id } = params;
+  { params }: { params: { id: string } }
+) => {
+  const { id } = params;
 
-//   console.log('The Session is:' + session)
+  try {
+    const character = await prisma.character.delete({
+      where: { id: id },
+    });
 
-//   console.log('The ID is:' + id)
+    return new NextResponse(
+      JSON.stringify(
+        "The following character was successfully deleted:" + character
+      ),
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    console.log(error);
 
-//   if (session?.user.isAdmin) {
+    return new NextResponse(JSON.stringify("An error occurred: " + error), {
+      status: 500,
+    });
+  }
+};
 
-//     try {
+export const PUT = async (
+  req: NextRequest,
+  { params }: { params: { id: string } } 
+) => {
 
-//       console.log('The Session is:' + session)
+  const { id } = params;
 
-//       console.log('The ID is:' + id)
+  try {
+    // Parse the request body
+    const body = await req.json();
 
-//       const character = await prisma.character.delete({
-//         where: { id: id },
-//       });
+    // Update the character
+    const updatedCharacter = await prisma.character.update({
+      where: { id: id },
+      data: body,
+    });
 
-//       return new NextResponse(
-//         JSON.stringify(
-//           "The following character was successfully deleted:" + character
-//         ),
-//         {
-//           status: 200,
-//         }
-//       );
-//     } catch (error) {
-//       console.log(error);
+    // Return the updated character
+    return new NextResponse(JSON.stringify(updatedCharacter), {
+      status: 200,
+    });
+  } catch (error) {
+    console.log(error);
 
-//       return new NextResponse(JSON.stringify("An error occurred: " + error), {
-//         status: 500,
-//       });
-//     }
-//   }
-//   return new NextResponse(JSON.stringify("You are not an admin!"), {
-//     status: 403,
-//   });
-  
-
-// };
+    return new NextResponse(JSON.stringify("An error occurred: " + error), {
+      status: 500,
+    });
+  }
+};

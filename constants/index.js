@@ -98,7 +98,7 @@ export const faerunGods = [
   { value: "shar", label: "Shar" },
   { value: "vlaakith", label: "Vlaakith" },
   {
-    value: "Atheism",
+    value: "atheism",
     label: "Atheism",
   },
   {
@@ -132,7 +132,7 @@ export const CatchPhraseTip =
 export const HabitsQuirksTip =
   "🤔 Develop unique habits or quirks that make your character memorable. Feel free to make them utterly strange as well if you want!";
 
-export const FearsTip = `😨 If it exists, it can be someone's phobia.`;
+export const FearsTip = `😨 When creating fears for a character, consider their past experiences, traumas, and insecurities. Think about what situations or outcomes would challenge their core beliefs or values, and what they dread the most. Additionally, consider how these fears might manifest in their behavior, thoughts, and decisions, and how they can add depth and complexity to the character's development and interactions with others.`;
 
 export const BackstoryTip =
   "📜 Set up your character's backstory to explain who they are and what motivates them. Add suspense, conflicts, failures, victories, and a range of emotions for depth.";
@@ -145,3 +145,8 @@ export const GoalsMotivationsTip =
 
 export const ConflictTip =
   "⚔️ Create conflict by challenging what your character cares about. Introduce obstacles, villains, or self-betrayal. Explore opposing desires, beliefs, or questioning values.";
+
+export const IdealTip =
+  "💠 What does your character care about? What is their most precius value? Ensure it corresponds to their alignment";
+
+export const ReasonTip = "🤝 The reason should be based on a common goal.";

@@ -1,10 +1,27 @@
+"use client";
 import React from "react";
 import { CheckIcon } from "@heroicons/react/20/solid";
+import { useUser } from "@clerk/clerk-react";
+
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
 const PricingCard = () => {
+  const router = useRouter();
+  const user = useUser();
+
+  const handleFreeTier = () => {
+    if (user) {
+      toast("You are already signed in! Enjoy!");
+    } else {
+      router.push("/sign-in");
+    }
+  };
+
   const includedFeaturesBasic = [
     "Character Creation",
     "Member resources",
-    "Store up to 8 Characters at once",
+    "Store up to 6 Characters at once",
   ];
   const includedFeaturesPro = [
     "Character Creation",
@@ -45,12 +62,12 @@ const PricingCard = () => {
                   USD
                 </span>
               </p>
-              <a
-                href="/sign-up"
-                className="mt-10 block w-full rounded-md bg-primary px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              <button
+                onClick={handleFreeTier}
+                className="mt-10 block w-full rounded-md duration-300 transition bg-primary px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get access
-              </a>
+              </button>
               <p className="mt-6 text-xs leading-5 text-gray-600">
                 Invoices and receipts available for easy company reimbursement
               </p>
@@ -88,12 +105,14 @@ const PricingCard = () => {
                   USD
                 </span>
               </p>
-              <a
-                href="/sign-up"
+              <button
+                onClick={() => {
+                  toast("Not available yet! Stay tuned!");
+                }}
                 className="mt-10 block w-full rounded-md transition duration-300 bg-accent px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-pink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get access
-              </a>
+              </button>
               <p className="mt-6 text-xs leading-5 text-gray-600">
                 Invoices and receipts available for easy company reimbursement
               </p>

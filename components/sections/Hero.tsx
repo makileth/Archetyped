@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,17 +28,17 @@ export default function Hero() {
         </div>
         <div className="mx-auto mt-[7rem] py-32 sm:py-16">
           <div className="text-center w-full items-center flex flex-col">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl z-[10] ">
               Create Tabletop <br />
             </h1>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-2">
-              <span className="bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-                {" "}
-                Characters{" "}
+              <span className="bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text z-[10]">
+                Characters
               </span>
-              <span className="italic text-transparent text-outline">
-                {" "}
-                Easily!{" "}
+
+              <span className="relative italic text-transparent text-white p-4 text-outline z-[5]">
+                Easily!
+                <div className="absolute w-[7rem] h-[2.5rem] md:w-[10rem] md:h-[4rem]  bg-pink-500 rotate-[-10deg] right-[1rem] md:right-8 top-5 z-[-5]"></div>
               </span>
             </h1>
             <div className="w-full h-[3rem] mt-[2rem]">
@@ -67,24 +67,25 @@ export default function Hero() {
             }}
           />
         </div>
-        <div className="md:block hidden md:mt-[15rem] mt-[0rem]">
+        <div className="md:flex  hidden md:mt-[15rem] mt-[0rem]">
           <div
-            className="absolute w-[33%] h-[60%] right-[20%] z-[20] top-[70%] bg-cover bg-top"
-            style={{ backgroundImage: `url(/assets/test3.png)` }}
+            className="absolute w-[33%] h-[70%] right-[21%] z-[20] top-[60%] bg-cover bg-top"
+            style={{ backgroundImage: `url(/assets/woman-hero.png)` }}
           />
           <div
             className="absolute w-[33%] h-[80%] right-[0%] z-[10] top-[50%] bg-cover bg-top"
-            style={{ backgroundImage: `url(/assets/test2.png)` }}
+            style={{ backgroundImage: `url(/assets/man-hero.png)` }}
           />
           <div
             className="absolute w-[33%] h-[80%] left-[0%] z-[10] top-[50%] bg-cover bg-top"
             style={{ backgroundImage: `url(/assets/test.png)` }}
           />
           <div
-            className="absolute w-[33%] h-[80%] left-[18%] z-[15] top-[50%] bg-cover bg-top"
+            className="absolute w-[33%] h-[80%] left-[21%] z-[15] top-[50%] bg-cover bg-top"
             style={{ backgroundImage: `url(/assets/test4.png)` }}
           />
         </div>
+        <div className="absolute md:block hidden w-full h-[10rem] bg-gradient-to-t from-white to-transparent z-[30] bottom-[-13rem]" />
       </div>
     </div>
   );

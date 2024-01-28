@@ -4,7 +4,7 @@ import { Input } from "../../../../components/ui/input";
 import { useRouter } from "next/navigation";
 import { onboardingValidation } from "../../../../lib/validations/onboarding.validation";
 import * as z from "zod";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Onboarding() {
   const router = useRouter();
@@ -56,20 +56,6 @@ export default function Onboarding() {
 
   return (
     <div className="bg-white min-h-[100vh]">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        limit={3}
-      />
-
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

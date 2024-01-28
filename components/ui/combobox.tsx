@@ -25,14 +25,17 @@ interface Option {
 
 interface ComboboxProps {
   options: Option[];
-  selectedValue: string;
+  defaultValue?: string;
   onSelect: (selectedValue: string) => void;
 }
 
-export const Combobox = ({ options, onSelect }: ComboboxProps) => {
+export const Combobox = ({
+  options,
+  defaultValue,
+  onSelect,
+}: ComboboxProps) => {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-
+  const [value, setValue] = React.useState(defaultValue || "");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -63,7 +66,6 @@ export const Combobox = ({ options, onSelect }: ComboboxProps) => {
                   setOpen(false);
                   onSelect(currentValue); // Call the onSelect callback
                 }}
-
               >
                 <Check
                   className={cn(
@@ -79,4 +81,4 @@ export const Combobox = ({ options, onSelect }: ComboboxProps) => {
       </PopoverContent>
     </Popover>
   );
-}
+};
