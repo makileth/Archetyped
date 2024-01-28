@@ -7,22 +7,7 @@ import { useRouter } from "next/navigation";
 import { ToolTip } from "../../../../../components/ui/ToolTip";
 import { Input } from "../../../../../components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  faerunGods,
-  characterVoices,
-  CharacterConceptTip,
-  TraitsTip,
-  FlawsTip,
-  VoiceTip,
-  DeityTip,
-  CatchPhraseTip,
-  HabitsQuirksTip,
-  FearsTip,
-  SecretTip,
-  ConflictTip,
-  BackstoryTip,
-  GoalsMotivationsTip,
-} from "../../../../../constants/index";
+
 import DeleteButton from "../../../../../components/ui/DeleteButton";
 import CharSheetButtons from "../../../../../components/ui/CharSheetButtons";
 

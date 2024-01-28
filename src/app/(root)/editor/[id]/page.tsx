@@ -46,6 +46,9 @@ type CharSheetInputs = {
   backgroundColor: string;
 };
 
+import BackSubmit from "../../../../../components/ui/BackSubmit";
+import { useUser } from "@clerk/nextjs";
+import NoRightsToAccess from "../../../../../components/errors/NoRightsToAccess";
 import {
   faerunGods,
   characterVoices,
@@ -63,10 +66,7 @@ import {
   GoalsMotivationsTip,
   ReasonTip,
   IdealTip,
-} from "./../../../../../constants/index";
-import BackSubmit from "../../../../../components/ui/BackSubmit";
-import { useUser } from "@clerk/nextjs";
-import NoRightsToAccess from "../../../../../components/errors/NoRightsToAccess";
+} from "../../../../../constants";
 
 type BadgeType = {
   title: string;

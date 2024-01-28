@@ -8,6 +8,19 @@ import { Combobox } from "../ui/combobox";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
+
+import CharacterValidator from "../../lib/validations/character.validation";
+import { Textarea } from "../ui/textarea";
+import { ToolTip } from "../ui/ToolTip";
+import { RadioColors } from "../ui/RadioColors";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Link from "next/link";
+import { useUser } from "@clerk/clerk-react";
+import Loading from "../ui/Loading";
+import BackSubmit from "../ui/BackSubmit";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import LoadingScreen from "../screens/LoadingScreen";
+import NoSlotsPage from "../errors/NoSlotsPage";
 import {
   faerunGods,
   characterVoices,
@@ -25,19 +38,7 @@ import {
   GoalsMotivationsTip,
   IdealTip,
   ReasonTip,
-} from "../../../../DnD_Character_Creation_App/character-verse/constants/index";
-import CharacterValidator from "../../lib/validations/character.validation";
-import { Textarea } from "../ui/textarea";
-import { ToolTip } from "../ui/ToolTip";
-import { RadioColors } from "../ui/RadioColors";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import Link from "next/link";
-import { useUser } from "@clerk/clerk-react";
-import Loading from "../ui/Loading";
-import BackSubmit from "../ui/BackSubmit";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import LoadingScreen from "../screens/LoadingScreen";
-import NoSlotsPage from "../errors/NoSlotsPage";
+} from "../../constants";
 type CharSheetInputs = {
   authorId: string;
   authorEmail: string;
