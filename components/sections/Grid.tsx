@@ -54,9 +54,14 @@ export default function Grid() {
               Create Characters you've always wanted
             </h2>
             <p className="text-slate-100 z-10 md:w-[25rem]">
-              Build in the open and collaborate with other Developers on yours
-              and their Extensions. Contribute as you'd like, and help others by
-              building on top of existing Extensions.
+              In the realm of character creation, Character Verse stands apart,
+              emphasizing the richness of personality and the art of roleplay.
+              It's not just an app; it's a portal to crafting characters that
+              resonate deeply in your tabletop narratives. Say farewell to the
+              intricacies of stats and skills, and welcome a tool that allows
+              you to focus on the heart and soul of your characters. With
+              Character Verse, your tabletop adventures are not just campaigns;
+              they're immersive stories waiting to unfold.
             </p>
             <Button
               onClick={() => {
