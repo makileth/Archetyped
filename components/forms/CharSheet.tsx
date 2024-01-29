@@ -81,7 +81,7 @@ type ValidationErrors =
   >;
 
 const getCharacterData = async () => {
-  const res = await fetch("http://localhost:3000/api/CharSheets", {
+  const res = await fetch("https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -371,7 +371,7 @@ const CharSheet = () => {
       if (traitsError == false && flawsError == false) {
         try {
           const url = await upload();
-          const res = await fetch("http://localhost:3000/api/CharSheets", {
+          const res = await fetch("https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets", {
             // https://restaurant-app-dusky.vercel.app
             method: "POST",
             body: JSON.stringify({

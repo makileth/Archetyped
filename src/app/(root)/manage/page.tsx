@@ -39,7 +39,7 @@ type CharSheetInputs = {
 };
 
 const getCharacterData = async () => {
-  const res = await fetch("http://localhost:3000/api/CharSheets", {
+  const res = await fetch("https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets", {
     cache: "no-store",
   });
   if (!res.ok) {
