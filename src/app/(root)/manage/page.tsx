@@ -39,9 +39,12 @@ type CharSheetInputs = {
 };
 
 const getCharacterData = async () => {
-  const res = await fetch("https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    "https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets",
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -161,11 +164,13 @@ const Manage = () => {
             </div>
           ))
         ) : (
-          <div className="w-full flex h-max pt-12 text-center">
-            <h1 className="md:text-3xl text-xl font-bold w-[90%]">
-              You do not have any characters
-            </h1>
-          </div>
+          <section className="min-h-[100vh] max-w-4xl mx-auto py-36">
+            <div className="w-full flex h-max pt-12 text-center">
+              <h1 className="md:text-3xl text-xl font-bold w-[90%]">
+                You do not have any characters
+              </h1>
+            </div>
+          </section>
         )}
       </div>
     </section>
