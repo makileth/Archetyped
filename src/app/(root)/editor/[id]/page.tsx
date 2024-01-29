@@ -96,7 +96,7 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://character-verse-73n2nd8wn-makileth.vercel.app/api/CharSheets/${id}`, {
+  const res = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 
@@ -394,7 +394,7 @@ const Editor = ({ params }: { params: { id: string } }) => {
         try {
           const url = await upload();
           const res = await fetch(
-            `https://character-verse-73n2nd8wn-makileth.vercel.app/api/CharSheets/${params.id}`,
+            `https://character-verse.vercel.app/api/CharSheets/${params.id}`,
             {
               method: "PUT",
               headers: {

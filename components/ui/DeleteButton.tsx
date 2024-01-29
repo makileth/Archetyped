@@ -32,7 +32,7 @@ const DeleteButton = ({
   const userId = user?.id;
 
   const handleDelete = async () => {
-    const response = await fetch(`https://character-verse-73n2nd8wn-makileth.vercel.app/api/CharSheets/${id}`, {
+    const response = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
