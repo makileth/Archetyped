@@ -40,7 +40,7 @@ type CharSheetInputs = {
 
 const getCharacterData = async () => {
   const res = await fetch(
-    "https://character-verse-ev7pyr80f-makileth.vercel.app/api/CharSheets",
+    "https://character-verse-73n2nd8wn-makileth.vercel.app/api/CharSheets",
     {
       cache: "no-store",
     }

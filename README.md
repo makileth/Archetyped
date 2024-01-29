@@ -12,7 +12,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [https://character-verse-ev7pyr80f-makileth.vercel.app](https://character-verse-ev7pyr80f-makileth.vercel.app) with your browser to see the result.
+Open [https://character-verse-73n2nd8wn-makileth.vercel.app](https://character-verse-73n2nd8wn-makileth.vercel.app) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

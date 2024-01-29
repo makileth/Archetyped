@@ -25,7 +25,7 @@ export function CopyButton({ id }: { id: string }) {
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(
-        `https://character-verse-ev7pyr80f-makileth.vercel.app/character/${id}`
+        `https://character-verse-73n2nd8wn-makileth.vercel.app/character/${id}`
       );
       console.log("URL copied to clipboard");
       setCopied(true);
@@ -69,7 +69,7 @@ export function CopyButton({ id }: { id: string }) {
             </Label>
             <Input
               id="link"
-              defaultValue={`https://character-verse-ev7pyr80f-makileth.vercel.app/character/${id}`}
+              defaultValue={`https://character-verse-73n2nd8wn-makileth.vercel.app/character/${id}`}
               readOnly
             />
           </div>
