@@ -530,6 +530,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
               name="characterName"
               onChange={handleChangeCharSheetInputs}
               value={CharSheetInputs.characterName}
+              onKeyDown={(e) => {
+                e.key === "Enter" && e.preventDefault();
+              }}
             />
             <hr />
             <div className="px-3 md:px-8 flex flex-row w-full h-max">
@@ -550,6 +553,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     onChange={handleChangeCharSheetInputs}
                     name="race"
                     value={CharSheetInputs.race}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -560,6 +566,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     onChange={handleChangeCharSheetInputs}
                     name="height"
                     value={CharSheetInputs.height}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -570,6 +579,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     onChange={handleChangeCharSheetInputs}
                     name="weight"
                     value={CharSheetInputs.weight}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -580,6 +592,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     onChange={handleChangeCharSheetInputs}
                     name="age"
                     value={CharSheetInputs.age}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
               </div>
@@ -599,6 +614,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                 cols={20}
                 rows={24}
                 style={{ resize: "none" }}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && e.preventDefault();
+                }}
               ></textarea>
             </div>
           </div>
@@ -627,6 +645,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     value={CharSheetInputs.concept}
                     onChange={handleChangeCharSheetInputs}
                     name="concept"
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -676,6 +697,10 @@ const Editor = ({ params }: { params: { id: string } }) => {
                         traitsError == true ? "error-border" : ""
                       }`}
                       onChange={handleChangeTrait}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                        e.key === "Enter" && handleTraitsClick();
+                      }}
                     />
                     <button
                       type="button"
@@ -734,6 +759,10 @@ const Editor = ({ params }: { params: { id: string } }) => {
                         flawsError == true ? "error-border" : ""
                       }`}
                       onChange={handleChangeFlaw}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                        e.key === "Enter" && handleFlawsClick();
+                      }}
                     />
                     <button
                       type="button"
@@ -791,6 +820,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       name="catchphrase"
                       onChange={handleChangeCharSheetInputs}
                       value={CharSheetInputs.catchphrase}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
@@ -812,6 +844,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       value={CharSheetInputs.habitsquirks}
                       name="habitsquirks"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -833,6 +868,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       value={CharSheetInputs.fears}
                       name="fears"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -850,6 +888,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       name="ideal"
                       value={CharSheetInputs.ideal}
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -867,6 +908,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       name="secret"
                       onChange={handleChangeCharSheetInputs}
                       value={CharSheetInputs.secret}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>
@@ -894,6 +938,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     value={CharSheetInputs.motherland}
                     name="motherland"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -915,6 +962,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     value={CharSheetInputs.conflict}
                     name="conflict"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -934,6 +984,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     style={{ resize: "none" }}
                     name="backstory"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
 
@@ -954,6 +1007,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     style={{ resize: "none" }}
                     name="motivation"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
 
@@ -976,6 +1032,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                     value={CharSheetInputs.reasonToJoin}
                     name="reasonToJoin"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
               </div>
@@ -1004,6 +1063,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       style={{ resize: "none" }}
                       name="family"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 py-2">
@@ -1020,6 +1082,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       style={{ resize: "none" }}
                       name="NPCs"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>
@@ -1040,6 +1105,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       style={{ resize: "none" }}
                       name="playerPCs"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 py-2">
@@ -1058,6 +1126,9 @@ const Editor = ({ params }: { params: { id: string } }) => {
                       style={{ resize: "none" }}
                       name="organisations"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>

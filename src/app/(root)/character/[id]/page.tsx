@@ -10,6 +10,24 @@ import { Textarea } from "@/components/ui/textarea";
 
 import DeleteButton from "../../../../../components/ui/DeleteButton";
 import CharSheetButtons from "../../../../../components/ui/CharSheetButtons";
+import {
+  faerunGods,
+  characterVoices,
+  CharacterConceptTip,
+  TraitsTip,
+  FlawsTip,
+  VoiceTip,
+  DeityTip,
+  CatchPhraseTip,
+  HabitsQuirksTip,
+  FearsTip,
+  SecretTip,
+  ConflictTip,
+  BackstoryTip,
+  GoalsMotivationsTip,
+  ReasonTip,
+  IdealTip,
+} from "../../../../../constants";
 
 type CharSheetInputs = {
   id: string;
@@ -400,7 +418,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
 
                     <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
-                      <p className="max-h-[8rem] overflow-y-auto">
+                      <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.family}
                       </p>
                     </div>
@@ -411,7 +429,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
 
                     <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
-                      <p className="max-h-[8rem] overflow-y-auto">
+                      <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.NPCs}
                       </p>
                     </div>
@@ -424,7 +442,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
 
                     <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
-                      <p className="max-h-[8rem] overflow-y-auto">
+                      <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.playerPCs}
                       </p>
                     </div>
@@ -435,7 +453,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
 
                     <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
-                      <p className="max-h-[8rem] overflow-y-auto">
+                      <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.organisations}
                       </p>
                     </div>

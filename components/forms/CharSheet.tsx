@@ -340,14 +340,14 @@ const CharSheet = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (traits.length < 2) {
       setTraitsError(true);
     }
     if (flaws.length < 1) {
       setFlawsError(true);
     }
-
-    e.preventDefault();
 
     const result = CharacterValidator.safeParse(CharSheetInputs);
 
@@ -508,6 +508,9 @@ const CharSheet = () => {
               name="characterName"
               onChange={handleChangeCharSheetInputs}
               value={CharSheetInputs.characterName}
+              onKeyDown={(e) => {
+                e.key === "Enter" && e.preventDefault();
+              }}
             />
             {validationErrors.characterName && (
               <p className="absolute top-0 left-0 transform -translate-y-full text-sm text-red-500">
@@ -533,6 +536,9 @@ const CharSheet = () => {
                     onChange={handleChangeCharSheetInputs}
                     name="race"
                     value={CharSheetInputs.race}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -543,6 +549,9 @@ const CharSheet = () => {
                     onChange={handleChangeCharSheetInputs}
                     name="height"
                     value={CharSheetInputs.height}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -553,6 +562,9 @@ const CharSheet = () => {
                     onChange={handleChangeCharSheetInputs}
                     name="weight"
                     value={CharSheetInputs.weight}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                   <input
                     type="text"
@@ -563,6 +575,9 @@ const CharSheet = () => {
                     onChange={handleChangeCharSheetInputs}
                     name="age"
                     value={CharSheetInputs.age}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
               </div>
@@ -582,6 +597,9 @@ const CharSheet = () => {
                 cols={20}
                 rows={24}
                 style={{ resize: "none" }}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && e.preventDefault();
+                }}
               />
             </div>
           </div>
@@ -610,6 +628,9 @@ const CharSheet = () => {
                     value={CharSheetInputs.concept}
                     onChange={handleChangeCharSheetInputs}
                     name="concept"
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -659,6 +680,10 @@ const CharSheet = () => {
                         traitsError == true ? "error-border" : ""
                       }`}
                       onChange={handleChangeTrait}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                        e.key === "Enter" && handleTraitsClick();
+                      }}
                     />
                     <button
                       type="button"
@@ -716,6 +741,10 @@ const CharSheet = () => {
                         flawsError == true ? "error-border" : ""
                       }`}
                       onChange={handleChangeFlaw}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                        e.key === "Enter" && handleFlawsClick();
+                      }}
                     />
                     <button
                       type="button"
@@ -772,6 +801,9 @@ const CharSheet = () => {
                       name="catchphrase"
                       onChange={handleChangeCharSheetInputs}
                       value={CharSheetInputs.catchphrase}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
@@ -793,6 +825,9 @@ const CharSheet = () => {
                       value={CharSheetInputs.habitsquirks}
                       name="habitsquirks"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -814,6 +849,9 @@ const CharSheet = () => {
                       value={CharSheetInputs.fears}
                       name="fears"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -830,6 +868,9 @@ const CharSheet = () => {
                       className="rounded-full border-gray-400  focus:outline-none"
                       name="ideal"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -846,6 +887,9 @@ const CharSheet = () => {
                       className="rounded-full border-gray-400  focus:outline-none"
                       name="secret"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>
@@ -873,6 +917,9 @@ const CharSheet = () => {
                     value={CharSheetInputs.motherland}
                     name="motherland"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -894,6 +941,9 @@ const CharSheet = () => {
                     value={CharSheetInputs.conflict}
                     name="conflict"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -913,6 +963,9 @@ const CharSheet = () => {
                     style={{ resize: "none" }}
                     name="backstory"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
 
@@ -933,6 +986,9 @@ const CharSheet = () => {
                     style={{ resize: "none" }}
                     name="motivation"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
 
@@ -955,6 +1011,9 @@ const CharSheet = () => {
                     value={CharSheetInputs.reasonToJoin}
                     name="reasonToJoin"
                     onChange={handleChangeCharSheetInputs}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
                   />
                 </div>
               </div>
@@ -983,6 +1042,9 @@ const CharSheet = () => {
                       style={{ resize: "none" }}
                       name="family"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 py-2">
@@ -999,6 +1061,9 @@ const CharSheet = () => {
                       style={{ resize: "none" }}
                       name="NPCs"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>
@@ -1019,6 +1084,9 @@ const CharSheet = () => {
                       style={{ resize: "none" }}
                       name="playerPCs"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                   <div className="flex flex-col gap-2 py-2">
@@ -1037,6 +1105,9 @@ const CharSheet = () => {
                       style={{ resize: "none" }}
                       name="organisations"
                       onChange={handleChangeCharSheetInputs}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                      }}
                     />
                   </div>
                 </div>

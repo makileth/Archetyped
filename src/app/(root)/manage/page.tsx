@@ -89,77 +89,84 @@ const Manage = () => {
 
       <hr />
       <div className="flex flex-1 flex-col md:flex-row flex-wrap my-12 gap-3 justify-between items-center">
-        {chars?.map((character: any) => (
-          <div
-            key={character.characterName} // Use a unique key for each character
-            className="flex relative flex-row w-[97%]  md:w-[49%] h-[12rem] shadow-lg border-[1px] border-neutral-200 rounded-[15px]"
-          >
-           
-            {character.img ? (
-              <Link
-              href={`/character/${character.id}`}
-              className="w-[5rem] relative mt-9 h-[5rem] ml-3 flex items-center justify-center rounded-full bg-cover"
+        {chars && chars.length > 0 ? (
+          chars.map((character: any) => (
+            <div
+              key={character.characterName} // Use a unique key for each character
+              className="flex relative flex-row w-[97%]  md:w-[49%] h-[12rem] shadow-lg border-[1px] border-neutral-200 rounded-[15px]"
             >
-              <Image
-                src={character.img}
-                width={125}
-                height={125}
-                className="object-cover w-full h-full rounded-full "
-                alt="Default Character's picture"
-              />
-            </Link>
-            ) : (
-            <Link
-              href={`/character/${character.id}`}
-              className="w-[5rem] relative mt-9 h-[5rem] ml-3 flex items-center justify-center rounded-full bg-cover"
-            >
-              <Image
-                 src="/assets/default-char-picture.png"
-                width={125}
-                height={125}
-                className="object-cover w-full h-full rounded-full "
-                alt="Default Character's picture"
-              />
-            </Link>
-            )}
-
-            <div className="flex flex-col w-3/4  justify-start items-start p-4 mt-4">
-              <h1 className="text-black font-bold text-2xl">
-                {character.characterName}
-              </h1>
-              <h4 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-accent to-primary">
-                {character.concept}
-              </h4>
-              <p className="text-black line-clamp-2 mt-2">
-                {character.description}
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                router.push(`/character/${character.id}`);
-              }}
-              className="text-black  hover:shadow-primary hover:shadow-xl transition duration-300 border-[0.5px] rounded-full flex flex-row gap-2 px-3  border-neutral-200 font-semibold absolute text-md bottom-2 right-5"
-            >
-              <div className="flex flex-row justify-between items-center my-[0.18rem]">
-                <p className="px-2 font-semibold text-sm">Open</p>
-                <div className=" w-[1.25rem] h-[1.25rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">
+              {character.img ? (
+                <Link
+                  href={`/character/${character.id}`}
+                  className="w-[5rem] relative mt-9 h-[5rem] ml-3 flex items-center justify-center rounded-full bg-cover"
+                >
                   <Image
-                    src="/assets/open.svg"
-                    alt="edit image"
-                    width={12}
-                    height={12}
-                    className="mx-auto mt-[0.275rem]"
+                    src={character.img}
+                    width={125}
+                    height={125}
+                    className="object-cover w-full h-full rounded-full "
+                    alt="Default Character's picture"
                   />
-                </div>
+                </Link>
+              ) : (
+                <Link
+                  href={`/character/${character.id}`}
+                  className="w-[5rem] relative mt-9 h-[5rem] ml-3 flex items-center justify-center rounded-full bg-cover"
+                >
+                  <Image
+                    src="/assets/default-char-picture.png"
+                    width={125}
+                    height={125}
+                    className="object-cover w-full h-full rounded-full "
+                    alt="Default Character's picture"
+                  />
+                </Link>
+              )}
+
+              <div className="flex flex-col w-3/4  justify-start items-start p-4 mt-4">
+                <h1 className="text-black font-bold text-2xl">
+                  {character.characterName}
+                </h1>
+                <h4 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-accent to-primary">
+                  {character.concept}
+                </h4>
+                <p className="text-black line-clamp-2 mt-2">
+                  {character.backstory}
+                </p>
               </div>
-            </button>
-            <DeleteButton
-              id={character.id}
-              refetchCharacters={refetchCharacters}
-            />
-            <EditButton id={character.id} />
+              <button
+                onClick={() => {
+                  router.push(`/character/${character.id}`);
+                }}
+                className="text-black  hover:bg-black hover:text-white transition duration-300 border-[0.5px] rounded-full flex flex-row gap-2 px-3  border-neutral-200 font-semibold absolute text-md bottom-2 right-5"
+              >
+                <div className="flex flex-row justify-between items-center my-[0.18rem]">
+                  <p className="px-2 font-semibold text-sm">Open</p>
+                  <div className=" w-[1.25rem] h-[1.25rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">
+                    <Image
+                      src="/assets/open.svg"
+                      alt="edit image"
+                      width={12}
+                      height={12}
+                      className="mx-auto mt-[0.275rem]"
+                    />
+                  </div>
+                </div>
+              </button>
+              <DeleteButton
+                id={character.id}
+                refetchCharacters={refetchCharacters}
+              />
+              <EditButton id={character.id} />
+            </div>
+          ))
+        ) : (
+          <div className="w-full flex h-max pt-12 text-center">
+            <h1 className="md:text-3xl text-xl font-bold w-[90%]">
+              You do not have any characters
+            </h1>
           </div>
-        ))}
+        )}
       </div>
     </section>
   );
