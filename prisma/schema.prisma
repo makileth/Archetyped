@@ -13,6 +13,7 @@ model Character {
   authorEmail     String
   img             String?
   characterName   String?
+  gender          String?
   concept         String?
   backstory       String?
   motivation      String?

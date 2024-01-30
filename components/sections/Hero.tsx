@@ -12,7 +12,7 @@ export default function Hero() {
   const router = useRouter();
 
   return (
-    <div className="min-h-[100vh] md:min-h-[55rem] lg:min-h-[65rem] mx-auto w-full md:max-w-6xl">
+    <div className="min-h-[100vh]  md:min-h-[55rem] lg:min-h-[65rem] mx-auto w-full md:max-w-6xl">
       <div className="relative isolate lg:px-8 flex flex-col">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -28,7 +28,7 @@ export default function Hero() {
         </div>
         <div className="mx-auto mt-[7rem] py-32 sm:py-16">
           <div className="text-center w-full items-center flex flex-col">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl z-[10] ">
+            <h1 className=" text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl z-[10] ">
               Create Tabletop <br />
             </h1>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-2">

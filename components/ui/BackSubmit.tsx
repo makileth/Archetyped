@@ -10,6 +10,7 @@ const BackSubmit = () => {
   return (
     <div className="flex px-2 md:mx-0 w-full my-2 h-max justify-between items-center">
       <button
+        type="button"
         onClick={() => {
           router.back();
         }}

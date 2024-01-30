@@ -34,6 +34,7 @@ type CharSheetInputs = {
   authorId: string;
   authorEmail: string;
   characterName: string;
+  gender: string;
   concept: string;
   height: string;
   age: string;
@@ -145,12 +146,16 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
             <div className="px-12 flex flex-row w-full h-max">
               <div className="flex flex-row items-center justify-around mx-auto gap-12 w-full my-3">
                 <div className="flex flex-col text-md items-center justify-between">
+                  <h4 className="font-semibold py-2 text-white">Gender</h4>
                   <h4 className="font-semibold py-2 text-white">Race</h4>
                   <h4 className="font-semibold py-2 text-white">Height</h4>
                   <h4 className="font-semibold py-2 text-white">Weight</h4>
                   <h4 className="font-semibold py-2 text-white">Age</h4>
                 </div>
                 <div className="flex flex-col text-md items-center justify-between">
+                  <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
+                    {singleCharacter.gender}
+                  </p>
                   <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.race}
                   </p>

@@ -93,7 +93,7 @@ const CreateChar = () => {
             <h1 className="font-bold text-md md:text-lg py-1 w-[90%]">
               Start by learning the basics!
             </h1>
-            <Button className="absolute bottom-2 right-2 rounded-full gap-1 w-1/2 h-[2rem] border-[1px] hover:bg-neutral-800 border-white">
+            <Button className="absolute bottom-2 right-2 rounded-full gap-1 w-3/4 sm:w-1/2 h-[2rem] border-[1px] hover:bg-neutral-800 border-white">
               <p className="text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-500">
                 Learn
               </p>
@@ -120,7 +120,7 @@ const CreateChar = () => {
               onClick={() => {
                 router.push("/create");
               }}
-              className="absolute bottom-2 right-2 rounded-full gap-1 w-3/4 md:w-2/3 h-[2rem] hover:bg-neutral-800"
+              className="absolute bottom-2 right-2 rounded-full gap-1 w-[90%] ss:w-3/4 md:w-2/3 h-[2rem] hover:bg-neutral-800"
             >
               <p className="text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-500">
                 Try Now

@@ -28,7 +28,7 @@ const CreateChar = () => {
         </h1>
       </div>
       <div className="h-full w-full relative rounded-[10px] overflow-hidden ">
-        <div className="absolute z-[40] px-4 py-1 bg-black left-5 top-5 rounded-2xl">
+        <div className="absolute z-[40] px-4 py-1 bg-black left-2 md:left-5 top-5 rounded-2xl">
           <p className=" text-white">Last Created Character</p>
         </div>
         <div className="absolute w-full h-full z-[30] bg-neutral-800 opacity-70 backdrop-blur-2xl" />

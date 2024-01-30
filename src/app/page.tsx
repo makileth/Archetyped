@@ -14,7 +14,7 @@ export default function Onboarding() {
   const router = useRouter();
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <Features />
       <Grid />

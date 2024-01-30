@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 export default function Grid() {
   const router = useRouter();
   return (
-    <section className="md:max-w-6xl w-screen mx-auto pt-12">
+    <section className="md:max-w-6xl w-screen mx-auto pt-[10rem] sm:pt-[5rem] md:pt-12">
       <div className="px-3 flex flex-col md:grid md:grid-cols-1 gap-6">
         <div
           className="bg-gradient-to-r py-[4rem] from-[#ffa8a8] shadow-2xl via-[#ffe3f9] to-white rounded-lg p-6 space-y-4 transition-all duration-500 ease-in-out transform  relative group w-full"
@@ -14,7 +14,7 @@ export default function Grid() {
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r  from-pink-400 to-primary opacity-0 group-hover:opacity-20 rounded-lg blur-[50px] transition-all duration-500 ease-in-out " />
-          <div className="md:w-3/4 w-full md:h-[90%] h-[50%] bg-black rounded-2xl    absolute bottom-[22rem] left-[7.5rem] md:bottom-[10rem] md:left-[30rem] overflow-hidden">
+          <div className="md:w-3/4 w-full md:h-[90%] h-[40%] bg-black rounded-2xl    absolute bottom-[85%] left-[7.5rem] md:bottom-[10rem] md:left-[30rem] overflow-hidden">
             <div className="flex flex-row w-full h-full">
               <div className="w-1/3 h-full">
                 <Image
@@ -121,7 +121,7 @@ export default function Grid() {
   );
 }
 
-function BookOpenIcon(props) {
+function BookOpenIcon(props: any) {
   return (
     <svg
       {...props}
@@ -141,7 +141,7 @@ function BookOpenIcon(props) {
   );
 }
 
-function LightbulbIcon(props) {
+function LightbulbIcon(props: any) {
   return (
     <svg
       {...props}
@@ -162,7 +162,7 @@ function LightbulbIcon(props) {
   );
 }
 
-function MessageCircleIcon(props) {
+function MessageCircleIcon(props: any) {
   return (
     <svg
       {...props}

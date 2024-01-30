@@ -3,6 +3,7 @@ import { z } from "zod";
 
 const CharacterValidator = z.object({
   characterName: z.string().min(1, { message: "Character name is required." }),
+  gender: z.string().min(1, { message: "Gender is required." }),
   concept: z.string().min(1, { message: "Concept is required." }),
   height: z.string().min(1, { message: "Height is required." }),
   age: z.string().min(1, { message: "Age is required." }),

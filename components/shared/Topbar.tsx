@@ -135,11 +135,11 @@ export function Topbar() {
                 Getting started
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <ul className="grid gap-2 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="flex shadow-around bg-gradient-to-r from-slate-100 to-pink-100 from- h-full w-full select-none flex-col justify-end rounded-md from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
                         <Image
@@ -149,15 +149,13 @@ export function Topbar() {
                           height={125}
                           alt="logo"
                         />
-                        <div className="mb-2 mt-4 text-lg font-medium">
+                        <div className=" mt-4 text-lg font-medium">
                           CharacterVerse
                         </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
+                        <hr className="my-1"/>
+                        <p className="text-sm font-medium leading-tight text-muted-foreground">
                           It's a portal to crafting characters that resonate
-                          deeply in your tabletop narratives. Welcome a tool
-                          that allows you to focus on the heart and soul of your
-                          characters. Make your campaigns into immersive stories
-                          waiting to unfold.
+                          deeply in your tabletop narratives. 
                         </p>
                       </a>
                     </NavigationMenuLink>

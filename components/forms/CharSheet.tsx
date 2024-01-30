@@ -39,34 +39,7 @@ import {
   IdealTip,
   ReasonTip,
 } from "../../constants";
-type CharSheetInputs = {
-  authorId: string;
-  authorEmail: string;
-  characterName: string;
-  concept: string;
-  height: string;
-  age: string;
-  weight: string;
-  ideal: string;
-  race: string;
-  backstory: string;
-  motivation: string;
-  reasonToJoin: string;
-  family: string;
-  playerPCs: string;
-  NPCs: string;
-  organisations: string;
-  description: string;
-  motherland: string;
-  fears: string;
-  habitsquirks: string;
-  voice: string;
-  deity: string;
-  conflict: string;
-  catchphrase: string;
-  secret: string;
-  backgroundColor: string;
-};
+import { CharSheetInputs } from "@/types/types";
 
 type BadgeType = {
   title: string;
@@ -181,6 +154,7 @@ const CharSheet = () => {
     }
     if (flaws.length < 3 && flaw.title !== "") {
       setFlaws((prev) => [...prev, flaw]);
+      setFlaw({ title: "", color: "" });
     }
   };
 
@@ -193,6 +167,7 @@ const CharSheet = () => {
     }
     if (traits.length < 3 && trait.title !== "") {
       setTraits((prev) => [...prev, trait]);
+      setTrait({ title: "", color: "" }); // Reset the trait state
     }
   };
 
@@ -277,6 +252,7 @@ const CharSheet = () => {
     authorId: "",
     authorEmail: "",
     characterName: "",
+    gender: "",
     backgroundColor: selectedColor,
     concept: "",
     height: "",
@@ -521,12 +497,27 @@ const CharSheet = () => {
             <div className="px-3 md:px-8 flex flex-row w-full h-max">
               <div className="flex flex-row items-center justify-around mx-auto  w-full my-3">
                 <div className="flex flex-col text-md  items-center w-1/2">
+                  <h4 className="font-semibold py-2 text-white">Gender</h4>
                   <h4 className="font-semibold py-2 text-white">Race</h4>
                   <h4 className="font-semibold py-2 text-white">Height</h4>
                   <h4 className="font-semibold py-2 text-white">Weight</h4>
                   <h4 className="font-semibold py-2 text-white">Age</h4>
                 </div>
                 <div className="flex flex-col text-md items-center w-1/2">
+                  <input
+                    type="text"
+                    className={`input-minimalistic py-2 text-center text-md font-semibold w-2/3 md:3/4 ${
+                      validationErrors.gender ? "error-border rounded-full" : ""
+                    }`}
+                    placeholder="Identity"
+                    onChange={handleChangeCharSheetInputs}
+                    name="gender"
+                    value={CharSheetInputs.gender}
+                    onKeyDown={(e) => {
+                      e.key === "Enter" && e.preventDefault();
+                    }}
+                    maxLength={20}
+                  />
                   <input
                     type="text"
                     className={`input-minimalistic py-2 text-center text-md font-semibold w-2/3 md:3/4 ${
@@ -539,6 +530,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={20}
                   />
                   <input
                     type="text"
@@ -565,6 +557,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={20}
                   />
                   <input
                     type="text"
@@ -578,29 +571,42 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={20}
                   />
                 </div>
               </div>
             </div>
             <hr />
-            <div className="flex flex-col w-full justify-around items-start">
+            <div className="flex flex-col relative w-full justify-around items-start">
               <h1 className="text-start font-bold py-3 ml-6 text-white">
                 Description:
               </h1>
               <textarea
                 placeholder="Blond hair, red eyes..."
-                className="input-minimalistic ml-6 w-[92%] md:w-[80%]"
+                className="input-minimalistic ml-6 mb-6 w-[92%] md:w-[80%]"
                 name="description"
                 onChange={handleChangeCharSheetInputs}
                 value={CharSheetInputs.description}
                 id=""
                 cols={20}
-                rows={24}
+                rows={22}
                 style={{ resize: "none" }}
                 onKeyDown={(e) => {
                   e.key === "Enter" && e.preventDefault();
                 }}
+                maxLength={1000}
               />
+              <p
+                className={`absolute bottom-0 md:bottom-[-0.5rem] text-sm left-5 ${
+                  CharSheetInputs.description.length > 300 ? "block" : "hidden"
+                } ${
+                  CharSheetInputs.description.length > 900
+                    ? "text-red-500"
+                    : "text-white"
+                }`}
+              >
+                {CharSheetInputs.description.length}/1000
+              </p>
             </div>
           </div>
 
@@ -631,6 +637,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={50}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -684,6 +691,8 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleTraitsClick();
                       }}
+                      maxLength={50}
+                      value={trait.title}
                     />
                     <button
                       type="button"
@@ -745,6 +754,8 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleFlawsClick();
                       }}
+                      maxLength={50}
+                      value={flaw.title}
                     />
                     <button
                       type="button"
@@ -804,6 +815,7 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={50}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
@@ -828,6 +840,7 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={50}
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -852,6 +865,7 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={50}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -871,6 +885,7 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={50}
                     />
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -890,6 +905,7 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={50}
                     />
                   </div>
                 </div>
@@ -920,6 +936,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={50}
                   />
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -944,9 +961,10 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={50}
                   />
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex relative flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-black ">
                       🎞️ Background
@@ -966,7 +984,21 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={4000}
                   />
+                  <p
+                    className={`absolute bottom-0 md:bottom-[-0.6rem] text-xs right-0 ${
+                      CharSheetInputs.backstory.length > 1000
+                        ? "block"
+                        : "hidden"
+                    } ${
+                      CharSheetInputs.backstory.length > 3700
+                        ? "text-red-500"
+                        : "text-black"
+                    }`}
+                  >
+                    {CharSheetInputs.backstory.length}/4000
+                  </p>
                 </div>
 
                 <div className="flex flex-col gap-2 py-2">
@@ -989,6 +1021,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={200}
                   />
                 </div>
 
@@ -1014,6 +1047,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
+                    maxLength={50}
                   />
                 </div>
               </div>
@@ -1026,7 +1060,7 @@ const CharSheet = () => {
               <hr className="md:block hidden " />
               <div className="flex flex-col md:flex-row items-center md:gap-8 justify-between">
                 <div className="flex flex-col py-2 w-full md:w-1/2">
-                  <div className="flex flex-col gap-2 py-2">
+                  <div className="flex relative flex-col gap-2 py-2">
                     <Label htmlFor="header" className="text-black ">
                       👨‍👩‍👧‍👦 Family
                     </Label>
@@ -1045,9 +1079,21 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={400}
                     />
+                    <p
+                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                        CharSheetInputs.family.length > 150 ? "block" : "hidden"
+                      } ${
+                        CharSheetInputs.family.length > 350
+                          ? "text-red-500"
+                          : "text-black"
+                      }`}
+                    >
+                      {CharSheetInputs.family.length}/400
+                    </p>
                   </div>
-                  <div className="flex flex-col gap-2 py-2">
+                  <div className="flex flex-col relative gap-2 py-2">
                     <Label htmlFor="header" className="text-black ">
                       🧑‍🤝‍🧑 NPCs
                     </Label>
@@ -1064,11 +1110,23 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={400}
                     />
+                    <p
+                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                        CharSheetInputs.NPCs.length > 150 ? "block" : "hidden"
+                      } ${
+                        CharSheetInputs.NPCs.length > 350
+                          ? "text-red-500"
+                          : "text-black"
+                      }`}
+                    >
+                      {CharSheetInputs.NPCs.length}/400
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col py-2 w-full md:w-1/2">
-                  <div className="flex flex-col gap-2 py-2">
+                  <div className="flex relative flex-col gap-2 py-2">
                     <Label htmlFor="header" className="text-black ">
                       👯 PCs
                     </Label>
@@ -1087,9 +1145,23 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={400}
                     />
+                    <p
+                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                        CharSheetInputs.playerPCs.length > 150
+                          ? "block"
+                          : "hidden"
+                      } ${
+                        CharSheetInputs.playerPCs.length > 350
+                          ? "text-red-500"
+                          : "text-black"
+                      }`}
+                    >
+                      {CharSheetInputs.playerPCs.length}/400
+                    </p>
                   </div>
-                  <div className="flex flex-col gap-2 py-2">
+                  <div className="flex flex-col relative gap-2 py-2">
                     <Label htmlFor="header" className="text-black ">
                       🚩 Organisations
                     </Label>
@@ -1108,7 +1180,21 @@ const CharSheet = () => {
                       onKeyDown={(e) => {
                         e.key === "Enter" && e.preventDefault();
                       }}
+                      maxLength={400}
                     />
+                    <p
+                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                        CharSheetInputs.organisations.length > 150
+                          ? "block"
+                          : "hidden"
+                      } ${
+                        CharSheetInputs.organisations.length > 350
+                          ? "text-red-500"
+                          : "text-black"
+                      }`}
+                    >
+                      {CharSheetInputs.organisations.length}/400
+                    </p>
                   </div>
                 </div>
               </div>

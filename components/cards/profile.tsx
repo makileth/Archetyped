@@ -8,7 +8,7 @@ function ProfilePage() {
       {user ? ( // check if the user object is available
         <h1 className="text-black text-[42px] font-bold">
           Welcome,
-          <span className="bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+          <span className="bg-gradient-to-r capitalize from-primary to-accent text-transparent bg-clip-text">
             {" "}
             {user.username}
           </span>
