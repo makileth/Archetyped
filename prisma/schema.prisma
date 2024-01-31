@@ -43,10 +43,10 @@ model Character {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isAdmin   Boolean  @default(false)
-  onboarded Boolean  @default(false)
-  username  String
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  maxCharacters Int      @default(6)
+  isAdmin       Boolean  @default(false)
+  premium       Boolean  @default(false)
 }
