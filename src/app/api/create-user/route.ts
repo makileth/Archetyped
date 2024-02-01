@@ -1,29 +1,25 @@
-import { PrismaClient } from "@prisma/client";
+import type { WebhookEvent } from "@clerk/clerk-sdk-node";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const prisma = new PrismaClient();
-
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { user } = req.body;
-
+const handler = (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // Create a new User record in the database
-    const newUser = await prisma.user.create({
-      data: {
-        id: user.id,
-      },
-    });
-
-    // Send a successful response
-    res.status(200).json(newUser);
+    const evt = req.body.evt as WebhookEvent;
+    switch (evt.type) {
+      case 'user.created':
+        // Handle user creation event
+        const userData = evt.data; // User data received in the event
+        console.log(userData)
+        break;
+      // Add cases for other event types if needed
+      default:
+        // Handle unknown event types
+        res.status(400).json({ error: 'Unsupported event type' });
+    }
+    res.status(200).end(); // Send a response indicating successful processing
   } catch (error) {
-    // Log the error and send an error response
     console.error(error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while creating the user" });
+    res.status(500).json({ error: "An error occurred while processing the webhook event" });
   }
-}
+};
+
+export default handler;
