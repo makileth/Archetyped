@@ -210,7 +210,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={TraitsTip} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto  gap-2">
+                  <div className="flex flex-row w-[16.6rem] overflow-x-auto  gap-2">
                     {Badges.traits?.length &&
                       Badges.traits.map((tr) => (
                         <div
@@ -233,7 +233,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={FlawsTip} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto  gap-2">
+                  <div className="flex w-[16.6rem] flex-row overflow-x-auto  gap-2">
                     {Badges.flaws?.length &&
                       Badges.flaws.map((fl) => (
                         <div

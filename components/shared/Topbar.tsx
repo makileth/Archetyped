@@ -139,7 +139,7 @@ export function Topbar() {
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex shadow-around bg-gradient-to-r from-slate-100 to-pink-100 from- h-full w-full select-none flex-col justify-end rounded-md from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="flex shadow-around bg-gradient-to-r from-slate-100 to-pink-100  h-full w-full select-none flex-col justify-end rounded-md from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
                         <Image
