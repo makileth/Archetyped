@@ -95,17 +95,17 @@ export function Topbar() {
     isSignedIn && (
       <>
         <NavigationMenu
-          className={`md:block hidden mx-auto rounded-2xl text-black fixed py-1 mt-1 px-2  inset-x-0 top-0 z-50 ${
+          className={`md:block hidden mx-auto rounded-2xl text-black fixed py-2 mt-1 px-2  inset-x-0 top-0 z-50 ${
             isScrolled
               ? "bg-opacity-50 bg-white backdrop-blur-2xl"
               : " bg-white"
           }`}
         >
-          <NavigationMenuList className="gap-0.5">
+          <NavigationMenuList className="">
             <NavigationMenuItem className="cursor-pointer">
               <Link href="/" legacyBehavior passHref>
                 <Image
-                  className="w-4/5 h-4/5 mt-2"
+                  className="w-4/5 h-4/5 mx-auto"
                   src="/assets/logo.svg"
                   width={125}
                   height={125}
@@ -124,14 +124,14 @@ export function Topbar() {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = "transparent";
                   }}
-                  className={`${navigationMenuTriggerStyle()}    hover:bg-neutral-300 rounded-[3rem] py-[0.45rem] h-[2rem] px-4 text-sm font-medium `}
+                  className={`${navigationMenuTriggerStyle()}   hover:bg-neutral-300 rounded-[3rem] py-[0.45rem] h-[2rem] px-3 text-sm font-medium `}
                 >
                   Menu
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className=" h-[2rem]  bg-transparent ">
+              <NavigationMenuTrigger className=" h-[2rem] px-3  bg-transparent ">
                 Getting started
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -152,10 +152,10 @@ export function Topbar() {
                         <div className=" mt-4 text-lg font-medium">
                           CharacterVerse
                         </div>
-                        <hr className="my-1"/>
+                        <hr className="my-1" />
                         <p className="text-sm font-medium leading-tight text-muted-foreground">
                           It's a portal to crafting characters that resonate
-                          deeply in your tabletop narratives. 
+                          deeply in your tabletop narratives.
                         </p>
                       </a>
                     </NavigationMenuLink>
@@ -173,7 +173,7 @@ export function Topbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className=" h-[2rem] bg-transparent  ">
+              <NavigationMenuTrigger className=" h-[2rem] px-3 bg-transparent  ">
                 Learn Character Design
               </NavigationMenuTrigger>
               <NavigationMenuContent>

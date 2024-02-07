@@ -39,12 +39,9 @@ type CharSheetInputs = {
 };
 
 const getCharacterData = async () => {
-  const res = await fetch(
-    "https://character-verse.vercel.app/api/CharSheets",
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch("http://localhost:3000/api/CharSheets", {
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -57,7 +54,7 @@ const Manage = () => {
   const router = useRouter();
 
   const {
-    data: chars, // Rename to 'chars' to reflect that it's an array
+    data: chars = [], // Initialize with an empty array if data is undefined
     isLoading,
     error,
   } = useQuery<CharSheetInputs[]>({
@@ -85,14 +82,19 @@ const Manage = () => {
         <h1 className="text-black text-4xl font-bold md:ml-0 ml-2.5">
           My Characters
         </h1>
-        <h4 className="text-black text-2xl font-bold md:ml-0 ml-2.5">
+        <h4
+          className={` text-2xl font-bold md:ml-0 ml-2.5 ${
+            chars?.length > 5 ? "text-red-500" : "text-black"
+          }`}
+        >
           Slots used: {chars?.length} / 6
         </h4>
       </div>
 
       <hr />
       <div className="flex flex-1 flex-col md:flex-row flex-wrap my-12 gap-3 justify-between items-center">
-        {chars && chars.length > 0 ? (
+        {chars &&
+          chars.length > 0 &&
           chars.map((character: any) => (
             <div
               key={character.characterName} // Use a unique key for each character
@@ -127,7 +129,7 @@ const Manage = () => {
               )}
 
               <div className="flex flex-col w-3/4  justify-start items-start p-4 mt-4">
-                <h1 className="text-black font-bold text-2xl">
+                <h1 className="text-black font-bold text-2xl truncate max-w-[100%]">
                   {character.characterName}
                 </h1>
                 <h4 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-accent to-primary">
@@ -162,16 +164,27 @@ const Manage = () => {
               />
               <EditButton id={character.id} />
             </div>
-          ))
-        ) : (
-          <section className="min-h-[100vh] max-w-4xl mx-auto py-36">
-            <div className="w-full flex h-max pt-12 text-center">
-              <h1 className="md:text-3xl text-xl font-bold w-[90%]">
-                You do not have any characters
-              </h1>
-            </div>
-          </section>
-        )}
+          ))}
+        <Link
+          href="/create"
+          className="flex relative hover:shadow-around hover:shadow-primary transition duration-300 flex-row w-[97%]  md:w-[49%] h-[12rem] shadow-lg border-[1px] border-neutral-200 rounded-[15px]"
+        >
+          <div className="w-[4rem] relative my-auto h-[4rem] ml-8 flex items-center justify-center rounded-full bg-cover">
+            <Image
+              src="/assets/add.svg"
+              width={125}
+              height={125}
+              className="object-cover w-full h-full rounded-full "
+              alt="Default Character's picture"
+            />
+          </div>
+
+          <div className="flex flex-col w-3/4  justify-start  items-start p-4 mt-4">
+            <h1 className="text-black font-bold text-2xl mt-11 max-w-[100%]">
+              New Character
+            </h1>
+          </div>
+        </Link>
       </div>
     </section>
   );

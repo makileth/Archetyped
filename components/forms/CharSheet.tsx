@@ -8,7 +8,6 @@ import { Combobox } from "../ui/combobox";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
-
 import CharacterValidator from "../../lib/validations/character.validation";
 import { Textarea } from "../ui/textarea";
 import { ToolTip } from "../ui/ToolTip";
@@ -54,7 +53,7 @@ type ValidationErrors =
   >;
 
 const getCharacterData = async () => {
-  const res = await fetch("https://character-verse.vercel.app/api/CharSheets", {
+  const res = await fetch("http://localhost:3000/api/CharSheets", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -347,7 +346,7 @@ const CharSheet = () => {
       if (traitsError == false && flawsError == false) {
         try {
           const url = await upload();
-          const res = await fetch("https://character-verse.vercel.app/api/CharSheets", {
+          const res = await fetch("http://localhost:3000/api/CharSheets", {
             // https://restaurant-app-dusky.vercel.app
             method: "POST",
             body: JSON.stringify({
@@ -487,6 +486,7 @@ const CharSheet = () => {
               onKeyDown={(e) => {
                 e.key === "Enter" && e.preventDefault();
               }}
+              maxLength={25}
             />
             {validationErrors.characterName && (
               <p className="absolute top-0 left-0 transform -translate-y-full text-sm text-red-500">
@@ -516,7 +516,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
-                    maxLength={20}
+                    maxLength={15}
                   />
                   <input
                     type="text"
@@ -530,7 +530,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
-                    maxLength={20}
+                    maxLength={15}
                   />
                   <input
                     type="text"
@@ -557,7 +557,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
-                    maxLength={20}
+                    maxLength={15}
                   />
                   <input
                     type="text"
@@ -571,7 +571,7 @@ const CharSheet = () => {
                     onKeyDown={(e) => {
                       e.key === "Enter" && e.preventDefault();
                     }}
-                    maxLength={20}
+                    maxLength={15}
                   />
                 </div>
               </div>
@@ -648,14 +648,14 @@ const CharSheet = () => {
                     <ToolTip content={TraitsTip} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto  gap-2">
+                  <div className="flex flex-row overflow-x-auto max-w-[16.6rem] gap-2">
                     {" "}
                     {/* TODO: fix scroll and make a custom badge*/}
                     {traits.length > 0 ? (
                       traits.map((tr) => (
                         <div
                           key={tr.title}
-                          className={` rounded-full group duration-300 transition hover:bg-black bg-${tr.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-sm leading-5 truncate`}
+                          className={` rounded-full relative group duration-300 transition hover:bg-black bg-${tr.color} px-2.5 py-[0.20rem] font-semibold transition-colors flex items-center justify-center w-max text-white text-[0.80rem]`}
                           aria-label="badge text"
                           onClick={() => deleteTrait(tr)}
                         >
@@ -664,10 +664,10 @@ const CharSheet = () => {
                             width={20}
                             height={20}
                             alt="delete image"
-                            className="group-hover:inline-block hidden  overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap"
+                            className="absolute group-hover:inline-block hidden mx-auto max-w-full whitespace-nowrap"
                           />
 
-                          <span className="group-hover:hidden inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
+                          <span className="group-hover:text-transparent text-clip text-white inline-block mx-auto w-max whitespace-nowrap">
                             {tr.title}
                           </span>
                         </div>
@@ -691,15 +691,21 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleTraitsClick();
                       }}
-                      maxLength={50}
+                      maxLength={25}
                       value={trait.title}
                     />
                     <button
                       type="button"
-                      className="absolute right-[2%] top-[10%] text-white hover:bg-neutral-700 bg-black py-[0.05rem] px-[0.50rem] text-center rounded-full font-bold"
+                      className="absolute right-[2%] top-[12%] text-white hover:bg-neutral-700 bg-black w-6 h-6 text-center rounded-full font-bold"
                       onClick={handleTraitsClick}
                     >
-                      +
+                      <Image
+                        alt="plus image"
+                        src="/assets/plus-input.svg"
+                        width={15}
+                        height={15}
+                        className="mx-auto my-auto"
+                      />
                     </button>
                   </div>
                 </div>
@@ -711,14 +717,14 @@ const CharSheet = () => {
                     <ToolTip content={FlawsTip} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto  gap-2">
+                  <div className="flex flex-shrink-0 flex-row  overflow-x-auto max-w-[16.6rem] gap-2">
                     {" "}
                     {/* TODO: fix scroll */}
                     {flaws.length > 0 ? (
                       flaws.map((fl) => (
                         <div
                           key={fl.title}
-                          className="rounded-full  group duration-300 hover:bg-black bg-red-500 px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-sm leading-5 truncate"
+                          className=" rounded-full relative  group duration-300 transition hover:bg-black bg-red-500 px-2.5 py-[0.20rem] font-semibold flex items-center justify-center w-max text-white text-[0.80rem]"
                           aria-label="badge text"
                           onClick={() => deleteFlaw(fl)}
                         >
@@ -727,10 +733,10 @@ const CharSheet = () => {
                             width={20}
                             height={20}
                             alt="delete image"
-                            className="group-hover:inline-block hidden  overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap"
+                            className="absolute group-hover:inline-block hidden mx-auto max-w-full whitespace-nowrap"
                           />
 
-                          <span className="group-hover:hidden inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
+                          <span className="group-hover:text-transparent text-clip text-white inline-block mx-auto w-max whitespace-nowrap">
                             {fl.title}
                           </span>
                         </div>
@@ -754,15 +760,21 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleFlawsClick();
                       }}
-                      maxLength={50}
+                      maxLength={25}
                       value={flaw.title}
                     />
                     <button
                       type="button"
-                      className="absolute right-[2%] top-[10%] text-white hover:bg-neutral-700 bg-black py-[0.05rem] px-[0.50rem] text-center rounded-full font-bold"
+                      className="absolute right-[2%] top-[12%] text-white hover:bg-neutral-700 bg-black w-6 h-6 text-center rounded-full font-bold"
                       onClick={handleFlawsClick}
                     >
-                      +
+                      <Image
+                        alt="plus image"
+                        src="/assets/plus-input.svg"
+                        width={15}
+                        height={15}
+                        className="mx-auto my-auto"
+                      />
                     </button>
                   </div>
                   <div className="flex flex-row w-full gap-2 overflow-x-auto">

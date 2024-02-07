@@ -32,7 +32,7 @@ const DeleteButton = ({
   const userId = user?.id;
 
   const handleDelete = async () => {
-    const response = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+    const response = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const DeleteButton = ({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle className="text-black">Are you absolutely sure?</DialogTitle>
           <DialogDescription className="pt-1 pb-6">
             This action cannot be undone. This will permanently delete your
             character from our servers.

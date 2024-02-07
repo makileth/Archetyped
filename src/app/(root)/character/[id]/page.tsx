@@ -80,7 +80,7 @@ type ImageType = {
 };
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 
@@ -139,7 +139,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 />
               )}
             </div>
-            <h1 className=" mb-2 text-center text-lg font-bold text-white">
+            <h1 className=" mb-2 text-center text-lg font-bold text-white text-clip">
               {singleCharacter.characterName}
             </h1>
             <hr />
@@ -210,15 +210,15 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={TraitsTip} />
                   </div>
 
-                  <div className="flex flex-row w-[16.6rem] overflow-x-auto  gap-2">
+                  <div className="flex flex-row w-[16.6rem] overflow-x-auto gap-2">
                     {Badges.traits?.length &&
                       Badges.traits.map((tr) => (
                         <div
                           key={tr.title}
-                          className={`rounded-full bg-${tr.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-[12px]  leading-5 truncate`}
+                          className={`rounded-full relative group duration-300 transition bg-${tr.color} px-2.5 py-[0.20rem] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center max-w-[10rem] shadow-md text-white text-[0.80rem] leading-5`}
                           aria-label="badge text"
                         >
-                          <span className="inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
+                          <span className="inline-block mx-auto overflow-hidden max-w-full whitespace-nowrap">
                             {tr.title}
                           </span>
                         </div>
@@ -238,10 +238,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       Badges.flaws.map((fl) => (
                         <div
                           key={fl.title}
-                          className={`rounded-full bg-${fl.color} px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-32 overflow-hidden shadow-md text-white text-[12px]  leading-5 truncate`}
+                          className=" rounded-full relative group duration-300 transition  bg-red-500 px-2.5 py-[0.20rem] font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center max-w-[10rem] shadow-md text-white text-[0.80rem] leading-5"
                           aria-label="badge text"
                         >
-                          <span className="inline-block overflow-ellipsis overflow-hidden max-w-full whitespace-nowrap">
+                          <span className=" inline-block mx-auto overflow-hidden max-w-full whitespace-nowrap">
                             {fl.title}
                           </span>
                         </div>
