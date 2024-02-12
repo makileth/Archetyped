@@ -1,6 +1,6 @@
 {
   "name": "character-verse",
-  "version": "1.0.2.1-alpha",
+  "version": "1.0.3-alpha",
   "private": true,
   "scripts": {
     "dev": "next dev",
