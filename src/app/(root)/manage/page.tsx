@@ -39,7 +39,7 @@ type CharSheetInputs = {
 };
 
 const getCharacterData = async () => {
-  const res = await fetch("https://character-verse.vercel.app/api/CharSheets", {
+  const res = await fetch("http://localhost:3000/api/CharSheets", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -132,10 +132,10 @@ const Manage = () => {
                 <h1 className="text-black font-bold text-2xl truncate max-w-[100%]">
                   {character.characterName}
                 </h1>
-                <h4 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-accent to-primary">
+                <h4 className="font-bold text-transparent text-ellipsis w-[15rem] md:w-[18.5rem] break-words line-clamp-1 bg-clip-text bg-gradient-to-t from-accent to-primary">
                   {character.concept}
                 </h4>
-                <p className="text-black line-clamp-2 mt-2">
+                <p className="text-black line-clamp-2 w-[15rem] md:w-[18.5rem] break-words mt-2">
                   {character.backstory}
                 </p>
               </div>

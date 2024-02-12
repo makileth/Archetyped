@@ -68,7 +68,7 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 
@@ -366,7 +366,7 @@ const Editor = ({ params }: { params: { id: string } }) => {
         try {
           const url = await upload();
           const res = await fetch(
-            `https://character-verse.vercel.app/api/CharSheets/${params.id}`,
+            `http://localhost:3000/api/CharSheets/${params.id}`,
             {
               method: "PUT",
               headers: {
@@ -481,7 +481,11 @@ const Editor = ({ params }: { params: { id: string } }) => {
                   />
                 ) : (
                   <Image
-                    src={charImage.img}
+                    src={
+                      charImage.img
+                        ? charImage.img
+                        : "/assets/default-char-picture.png"
+                    }
                     width={250}
                     height={250}
                     className="object-cover group-hover:scale-105 w-full h-full rounded-full duration-300 transition group-hover:opacity-10"
@@ -704,7 +708,7 @@ const Editor = ({ params }: { params: { id: string } }) => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleTraitsClick();
                       }}
-                      maxLength={25}
+                      maxLength={50}
                       value={trait.title}
                     />
                     <button
@@ -773,7 +777,7 @@ const Editor = ({ params }: { params: { id: string } }) => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleFlawsClick();
                       }}
-                      maxLength={25}
+                      maxLength={50}
                       value={flaw.title}
                     />
                     <button

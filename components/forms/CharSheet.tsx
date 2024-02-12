@@ -53,7 +53,7 @@ type ValidationErrors =
   >;
 
 const getCharacterData = async () => {
-  const res = await fetch("https://character-verse.vercel.app/api/CharSheets", {
+  const res = await fetch("http://localhost:3000/api/CharSheets", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -346,7 +346,7 @@ const CharSheet = () => {
       if (traitsError == false && flawsError == false) {
         try {
           const url = await upload();
-          const res = await fetch("https://character-verse.vercel.app/api/CharSheets", {
+          const res = await fetch("http://localhost:3000/api/CharSheets", {
             // https://restaurant-app-dusky.vercel.app
             method: "POST",
             body: JSON.stringify({
@@ -648,7 +648,7 @@ const CharSheet = () => {
                     <ToolTip content={TraitsTip} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto max-w-[16.6rem] gap-2">
+                  <div className="flex flex-row overflow-x-auto md:max-w-[16.6rem] gap-2">
                     {" "}
                     {/* TODO: fix scroll and make a custom badge*/}
                     {traits.length > 0 ? (
@@ -691,7 +691,7 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleTraitsClick();
                       }}
-                      maxLength={25}
+                      maxLength={50}
                       value={trait.title}
                     />
                     <button
@@ -717,7 +717,7 @@ const CharSheet = () => {
                     <ToolTip content={FlawsTip} />
                   </div>
 
-                  <div className="flex flex-shrink-0 flex-row  overflow-x-auto max-w-[16.6rem] gap-2">
+                  <div className="flex flex-shrink-0 flex-row  overflow-x-auto md:max-w-[16.6rem] gap-2">
                     {" "}
                     {/* TODO: fix scroll */}
                     {flaws.length > 0 ? (
@@ -760,7 +760,7 @@ const CharSheet = () => {
                         e.key === "Enter" && e.preventDefault();
                         e.key === "Enter" && handleFlawsClick();
                       }}
-                      maxLength={25}
+                      maxLength={50}
                       value={flaw.title}
                     />
                     <button

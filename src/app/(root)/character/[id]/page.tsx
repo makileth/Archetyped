@@ -80,7 +80,7 @@ type ImageType = {
 };
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 
@@ -121,7 +121,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
             className={`bg-${singleCharacter.backgroundColor} w-full md:w-1/3 py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-tr-[0px] md:rounded-l-xl `}
           >
             <h1 className="text-white text-2xl font-bold">Appearance</h1>
-            <div className="md:w-[250px] relative my-6 md:h-[250px] mx-auto flex items-center justify-center rounded-full bg-cover">
+            <div className="md:w-[250px] w-full h-full relative my-6 md:h-[250px] mx-auto flex items-center justify-center rounded-full bg-cover">
               {charImage.img ? (
                 <img
                   // TODO: change later
@@ -160,10 +160,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     {singleCharacter.race}
                   </p>
                   <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
-                    {singleCharacter.weight}
+                    {singleCharacter.height}
                   </p>
                   <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
-                    {singleCharacter.height}
+                    {singleCharacter.weight}
                   </p>
                   <p className="truncate focus:outline-none bg-transparent my-2 font-semibold w-full h-6 text-white">
                     {singleCharacter.age}
@@ -198,8 +198,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={CharacterConceptTip} />
                   </div>
 
-                  <div className="text-[12px] rounded-full py-1.5 px-3 bg-transparent border-neutral-400 border-[1px] text-black">
-                    <p className="truncate">{singleCharacter.concept}</p>
+                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-3 bg-transparent  border-neutral-400 border-[1px] text-black">
+                    <p className="line-clamp-1 overflow-x-auto">
+                      {singleCharacter.concept}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -210,7 +212,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={TraitsTip} />
                   </div>
 
-                  <div className="flex flex-row w-[16.6rem] overflow-x-auto gap-2">
+                  <div className="flex flex-row md:w-[16.6rem] overflow-x-auto gap-2">
                     {Badges.traits?.length &&
                       Badges.traits.map((tr) => (
                         <div
@@ -233,7 +235,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={FlawsTip} />
                   </div>
 
-                  <div className="flex w-[16.6rem] flex-row overflow-x-auto  gap-2">
+                  <div className="flex md:w-[16.6rem] flex-row overflow-x-auto  gap-2">
                     {Badges.flaws?.length &&
                       Badges.flaws.map((fl) => (
                         <div
@@ -282,8 +284,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={CatchPhraseTip} />
                     </div>
 
-                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                      <p className="truncate">{singleCharacter.catchphrase}</p>
+                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="line-clamp-1  overflow-x-auto">
+                        {singleCharacter.catchphrase}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
@@ -294,8 +298,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={HabitsQuirksTip} />
                     </div>
 
-                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                      <p className="truncate">{singleCharacter.habitsquirks}</p>
+                    <div className="text-[12px] md:w-[16.6rem] w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="line-clamp-1  overflow-x-auto">
+                        {singleCharacter.habitsquirks}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -306,8 +312,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={FearsTip} />
                     </div>
 
-                    <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                      <p className="truncate">{singleCharacter.fears}</p>
+                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="line-clamp-1  overflow-x-auto">
+                        {singleCharacter.fears}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -318,8 +326,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={SecretTip} />
                     </div>
 
-                    <div className="text-[12px] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                      <p className="truncate">{singleCharacter.ideal}</p>
+                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="line-clamp-1  overflow-x-auto">
+                        {singleCharacter.ideal}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
@@ -330,8 +340,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       <ToolTip content={SecretTip} />
                     </div>
 
-                    <div className="text-[12px] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                      <p className="truncate">{singleCharacter.secret}</p>
+                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                      <p className="line-clamp-1  overflow-x-auto">
+                        {singleCharacter.secret}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -348,8 +360,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     </Label>
                   </div>
 
-                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                    <p className="truncate">{singleCharacter.motherland}</p>
+                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <p className="line-clamp-1  overflow-x-auto">
+                      {singleCharacter.motherland}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -360,8 +374,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={ConflictTip} />
                   </div>
 
-                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                    <p className="truncate">{singleCharacter.conflict}</p>
+                  <div className="text-[12px] md:w-[16.6rem]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <p className="line-clamp-1  overflow-x-auto">
+                      {singleCharacter.conflict}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 py-2">
@@ -372,8 +388,8 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={BackstoryTip} />
                   </div>
 
-                  <div className="rounded-[15px] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
-                    <p className="h-[14.8rem] overflow-y-auto">
+                  <div className="rounded-[15px] md:w-[16.6rem] w-full border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <p className="h-[14.8rem] md:w-[15.2rem] overflow-y-auto overflow-x-hidden break-words">
                       {singleCharacter.backstory}
                     </p>
                   </div>
@@ -388,7 +404,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
 
                   <p
-                    className=" h-[5rem] overflow-y-auto rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-black"
+                    className=" h-[5rem] md:w-[16.6rem] overflow-y-auto rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-black"
                     style={{ resize: "none" }}
                   >
                     {singleCharacter.motivation}
@@ -403,7 +419,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                     <ToolTip content={SecretTip} />
                   </div>
 
-                  <div className="text-[12px]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
                     <p>{singleCharacter.reasonToJoin}</p>
                   </div>
                 </div>
@@ -422,7 +438,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       👨‍👩‍👧‍👦 Family
                     </Label>
 
-                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.family}
                       </p>
@@ -433,7 +449,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       🧑‍🤝‍🧑 NPCs
                     </Label>
 
-                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.NPCs}
                       </p>
@@ -446,7 +462,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       👯 PCs
                     </Label>
 
-                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.playerPCs}
                       </p>
@@ -457,7 +473,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       🚩 Organisations
                     </Label>
 
-                    <div className="rounded-[15px] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.organisations}
                       </p>
