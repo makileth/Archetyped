@@ -26,7 +26,11 @@ import {
   faerunGods,
   sheetThemes,
 } from "../../constants";
-import { cocCharSheetInputs, dndCharSheetInputs, dndCharSheetInputsDb } from "@/types/types";
+import {
+  cocCharSheetInputs,
+  dndCharSheetInputs,
+  dndCharSheetInputsDb,
+} from "@/types/types";
 import TextEditor from "../ui/TextEditor";
 import CharSheetButtons from "../ui/CharSheetButtons";
 
@@ -53,9 +57,12 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://archetyped.vercel.app/api/CharSheets/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://archetyped.vercel.app/api/CharSheets/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed!");
   }
@@ -73,7 +80,6 @@ const DndCharSheet = ({
   paramsId?: string;
   isReadOnly?: boolean;
 }) => {
-
   const getDndCharactersData = async () => {
     const res = await fetch(
       "https://archetyped.vercel.app/api/CharSheets?sortBy=createdAt",
@@ -190,10 +196,9 @@ const DndCharSheet = ({
 
       const resData = await res.json();
       const imageUrl = resData.url; // Extract URL from the response
-   
+
       return imageUrl;
     } catch (error) {
-
       // Handle error uploading image
       throw error;
     }
@@ -335,7 +340,6 @@ const DndCharSheet = ({
       ...prev,
       voice: selectedValue,
     }));
-
   };
 
   const handleDeityChange = (selectedValue: string) => {
@@ -343,7 +347,6 @@ const DndCharSheet = ({
       ...prev,
       deity: selectedValue,
     }));
-
   };
 
   const handleBackgroundColorClick = (selectedColor: string) => {
@@ -352,7 +355,6 @@ const DndCharSheet = ({
       ...prev,
       backgroundColor: selectedColor,
     }));
-
   };
 
   const [selectedColor, setSelectedColor] = useState("red-500");
@@ -423,8 +425,6 @@ const DndCharSheet = ({
         return prevErrors;
       }
     });
-
-
   };
 
   useEffect(() => {
@@ -445,7 +445,6 @@ const DndCharSheet = ({
         setImageUrl(characterData.img);
         setSelectedColor(characterData.backgroundColor);
       } catch (error) {
-    
         setLoading(false);
       } finally {
         setLoading(false);
@@ -494,35 +493,33 @@ const DndCharSheet = ({
             url = imageUrl; // Use the existing imageUrl if no new file is provided
           }
 
-      
-
-          const res = await fetch(`https://archetyped.vercel.app/api/${submitPath}`, {
-            method: method,
-            body: JSON.stringify({
-              ...dndCharSheetInputs,
-              img: url,
-              traits,
-              flaws,
-            }),
-          });
+          const res = await fetch(
+            `https://archetyped.vercel.app/api/${submitPath}`,
+            {
+              method: method,
+              body: JSON.stringify({
+                ...dndCharSheetInputs,
+                img: url,
+                traits,
+                flaws,
+              }),
+            }
+          );
 
           const data = await res.json();
 
-  
-
-          if (submitPath == "POST") {
+          if (method === "POST") {
             toast(
-              `Character ${dndCharSheetInputs.characterName} Created Successfully!`
+              `Character ${dndCharSheetInputs.characterName} created successfully!`
             );
           } else {
             toast(
-              `Character ${dndCharSheetInputs.characterName} Updated Successfully!`
+              `Character ${dndCharSheetInputs.characterName} updated successfully!`
             );
           }
 
           router.push("/menu");
         } catch (err) {
-  
           toast.error("Something went wrong. Please try again later.");
         }
       } else {
