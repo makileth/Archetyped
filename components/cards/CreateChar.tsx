@@ -69,7 +69,7 @@ const CreateChar = () => {
           </div>
           <div className="border-[1px] border-neutral-300 w-full h-[55%] relative overflow-hidden rounded-2xl pl-4 pt-4 bg-neutral-100">
             <h4 className="font-semibold text-sm text-neutral-700">
-              You might find it useful:
+              Navigate Insights:
             </h4>
             <h1 className="text-neutral-900 font-bold leading-6 text-lg md:text-md py-1 w-[45%]">
               {storytellingAcademyPosts[0].heading}

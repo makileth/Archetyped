@@ -80,15 +80,18 @@ const ManageChar = () => {
       {isLoading ? (
         <SpinningLoading />
       ) : (
-        <div className="h-full group border-[1px] border-neutral-200 w-full relative rounded-[10px] overflow-hidden ">
+        <div className="h-full group border-[1px] border-neutral-200 w-full relative rounded-[10px] overflow-hidden">
           {allCharacters.length === 0 && (
-            <div>
-              <div className="absolute w-full h-full z-[30] bg-neutral-800 opacity-70 backdrop-blur-2xl" />
-              <p className="left-[19%] top-[45%] absolute font-medium text-white z-[40]">
-                You don't have any characters yet.
-              </p>
+            <div className="absolute inset-0 flex items-center justify-center z-[30]">
+              <div className="absolute w-full h-full bg-black opacity-50 blur-2xl" />
+              <div className="bg-neutral-800 bg-opacity-70 backdrop-blur-2xl rounded-lg p-4">
+                <p className="text-center font-medium text-white">
+                  You don't have any characters yet.
+                </p>
+              </div>
             </div>
           )}
+
           <div className="absolute z-[40] px-4 py-1 bg-neutral-900 backdrop-blur-xl bg-opacity-70 left-2 md:left-5 top-5 rounded-2xl">
             <p className="text-md text-neutral-100">Latest Activity</p>
           </div>
@@ -100,13 +103,18 @@ const ManageChar = () => {
             onClick={() => {
               lastCharacter
                 ? router.push(
-                    `/${lastCharacter?.birthday ? "coc-character" : "dnd-character"}/${lastCharacter?.id}`
+                    `/${
+                      lastCharacter?.birthday
+                        ? "coc-character"
+                        : "dnd-character"
+                    }/${lastCharacter?.id}`
                   )
                 : router.push(`/manage`);
             }}
             alt="last created character image"
             className={`w-full cursor-pointer h-full object-cover bg-center group-hover:scale-[110%] duration-500 transition`}
           />
+
           <div
             className={`${
               lastCharacter ? "block" : "hidden"

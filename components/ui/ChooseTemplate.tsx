@@ -19,22 +19,22 @@ import { useRef } from "react";
 const templates = [
   {
     title: "D&D  5e",
-    desc: "Dive into the fantasy world",
+    desc: "It's time for a new hero to arrive. Dive into adventuring.",
     img: "/assets/templateCards/dnd.webp",
     comingSoon: false,
     link: "/create-dnd-character",
   },
   {
     title: "Call of Cthulhu",
-    desc: "Craft your next investigator to challenge the unknown",
+    desc: "Your next investigator awaits. Challenge the unknown.",
     img: "/assets/templateCards/coc.jpg",
     comingSoon: false,
     link: "/create-coc-character",
   },
   {
     title: "Literature",
-    desc: "Create exciting characters for your book",
-    img: "/assets/templateCards/book.jpg",
+    desc: "The forge of dynamic Characters to enrich your story.",
+    img: "/assets/templateCards/literature.png",
     comingSoon: true,
     link: "/menu",
   },
@@ -93,38 +93,61 @@ export function ChooseTemplate({ page }: { page: string }) {
         )}
       </DialogTrigger>
 
-      <DialogContent className="max-6-xl rounded-2xl">
+      <DialogContent className="max-6-xl max-h-[95%] overflow-y-auto rounded-2xl">
         <DialogHeader>
           <DialogTitle className="text-black font-bold text-2xl">
             Choose a Template
           </DialogTitle>
 
-          <DialogClose className="absolute top-2.5 right-2.5" asChild>
+          <DialogClose
+            className="absolute focus:outline-none focus:ring-0 top-2.5 right-2.5"
+            asChild
+          >
             <button type="button">
               <Image
                 src="/assets/close.svg"
                 width={20}
                 height={20}
                 alt="close button"
-                className="mx-auto my-auto outline-none"
+                className="mx-auto my-auto "
               />
             </button>
           </DialogClose>
         </DialogHeader>
 
-        <div className="flex flex-col md:flex-row py-4 px-6 rounded-2xl bg-neutral-200 items-center h-[30rem] justify-between space-x-2">
-          {templates.map((temp) => (
-            <DialogClose asChild>
-              <Link
-                href={temp.link}
-                key={temp.title} // Unique key for each template
-                className="md:w-1/3 w-full h-1/2 md:h-full relative gap-2 flex flex-col overflow-hidden transition duration-500"
-              >
+        <div className="flex flex-col gap-4 md:gap-0 md:flex-row py-6 px-6 rounded-2xl bg-neutral-200 items-center h-full md:h-[30rem] justify-between space-x-2">
+          {templates.map((temp) =>
+            temp.comingSoon == false ? (
+              <DialogClose asChild key={temp.title}>
+                <Link
+                  href={temp.link}
+                  key={temp.title}
+                  className="md:w-1/3 w-full h-1/3 md:h-full relative gap-2 flex flex-col overflow-hidden transition duration-500"
+                >
+                  <div className="w-full h-full rounded-2xl overflow-hidden">
+                    <Image
+                      width={1000}
+                      height={1000}
+                      className="h-full w-full object-cover hover:scale-105 duration-300 transition"
+                      src={temp.img}
+                      alt="card image dnd"
+                    />
+                  </div>
+                  <div className="h-max w-full flex flex-col gap-0.5 items-start  rounded-xl ">
+                    <h1 className="font-bold text-xl text-neutral-900">
+                      {temp.title}
+                    </h1>
+                    <p className="text-neutral-700 text-xs">{temp.desc}</p>
+                  </div>
+                </Link>
+              </DialogClose>
+            ) : (
+              <div className="md:w-1/3 w-full h-1/3 md:h-full relative gap-2 flex flex-col overflow-hidden transition duration-500">
                 <div className="w-full h-full rounded-2xl overflow-hidden">
                   <Image
                     width={1000}
                     height={1000}
-                    className="h-full w-full object-cover hover:scale-105 duration-300 transition"
+                    className="h-full w-full object-cover duration-300 transition"
                     src={temp.img}
                     alt="card image dnd"
                   />
@@ -135,9 +158,9 @@ export function ChooseTemplate({ page }: { page: string }) {
                   </h1>
                   <p className="text-neutral-700 text-xs">{temp.desc}</p>
                 </div>
-              </Link>
-            </DialogClose>
-          ))}
+              </div>
+            )
+          )}
         </div>
       </DialogContent>
     </Dialog>
