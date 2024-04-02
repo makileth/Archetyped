@@ -114,27 +114,29 @@ export function ChooseTemplate({ page }: { page: string }) {
 
         <div className="flex flex-col md:flex-row py-4 px-6 rounded-2xl bg-neutral-200 items-center h-[30rem] justify-between space-x-2">
           {templates.map((temp) => (
-            <Link
-              href={temp.link}
-              key={temp.title} // Unique key for each template
-              className="md:w-1/3 w-full h-1/2 md:h-full relative gap-2 flex flex-col overflow-hidden transition duration-500"
-            >
-              <div className="w-full h-full rounded-2xl overflow-hidden">
-                <Image
-                  width={1000}
-                  height={1000}
-                  className="h-full w-full object-cover hover:scale-105 duration-300 transition"
-                  src={temp.img}
-                  alt="card image dnd"
-                />
-              </div>
-              <div className="h-max w-full flex flex-col gap-0.5 items-start  rounded-xl ">
-                <h1 className="font-bold text-xl text-neutral-900">
-                  {temp.title}
-                </h1>
-                <p className="text-neutral-700 text-xs">{temp.desc}</p>
-              </div>
-            </Link>
+            <DialogClose asChild>
+              <Link
+                href={temp.link}
+                key={temp.title} // Unique key for each template
+                className="md:w-1/3 w-full h-1/2 md:h-full relative gap-2 flex flex-col overflow-hidden transition duration-500"
+              >
+                <div className="w-full h-full rounded-2xl overflow-hidden">
+                  <Image
+                    width={1000}
+                    height={1000}
+                    className="h-full w-full object-cover hover:scale-105 duration-300 transition"
+                    src={temp.img}
+                    alt="card image dnd"
+                  />
+                </div>
+                <div className="h-max w-full flex flex-col gap-0.5 items-start  rounded-xl ">
+                  <h1 className="font-bold text-xl text-neutral-900">
+                    {temp.title}
+                  </h1>
+                  <p className="text-neutral-700 text-xs">{temp.desc}</p>
+                </div>
+              </Link>
+            </DialogClose>
           ))}
         </div>
       </DialogContent>
