@@ -33,7 +33,7 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 import { Dialog } from "@headlessui/react";
 import { usePathname } from "next/navigation";
-import ChooseTemplate from "../ui/chooseTemplate";
+import ChooseTemplate from "../ui/ChooseTemplate";
 const navigation = [
   { name: "Menu", href: "/menu" },
   { name: "Create a Character", href: "/create" },

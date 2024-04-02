@@ -9,7 +9,7 @@ import LoadingScreen from "../../../../components/screens/LoadingScreen";
 import EditButton from "../../../../components/ui/EditButton";
 import Link from "next/link";
 import { cocCharSheetInputs } from "@/types/types";
-import ChooseTemplate from "../../../../components/ui/chooseTemplate";
+import ChooseTemplate from "../../../../components/ui/ChooseTemplate";
 type CharSheetInputs = {
   authorId: string;
   img: string;

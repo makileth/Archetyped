@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 
 const Footer = () => {
@@ -9,7 +9,11 @@ const Footer = () => {
       setCurrentYear(new Date().getFullYear());
     }, []); // Runs once when the component mounts
 
-    return <p className="text-gray-500 w-full text-center pt-3">© {currentYear} Archetyped</p>;
+    return (
+      <p className="text-gray-500 w-full text-center pt-3">
+        © {currentYear} Archetyped
+      </p>
+    );
   };
 
   return (
@@ -19,7 +23,7 @@ const Footer = () => {
           <ul className=" flex justify-center gap-6">
             <li>
               <a
-                href="https://github.com/makileth/Character-Verse"
+                href="https://github.com/makileth/Archetyped"
                 rel="noreferrer"
                 target="_blank"
                 className="text-gray-700 transition hover:opacity-75"

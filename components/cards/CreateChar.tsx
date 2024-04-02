@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import ChooseTemplate from "../ui/chooseTemplate";
+import ChooseTemplate from "../ui/ChooseTemplate";
 import {
   characterAcademyPosts,
   roleplayAcademyPosts,
