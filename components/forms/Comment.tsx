@@ -37,9 +37,9 @@ const CommentForm: React.FC = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter your comment"
-        className='text-black'
+        className='text-neutral-900'
       />
-      <button className='bg-black ' type="submit">Submit</button>
+      <button className='bg-neutral-900 ' type="submit">Submit</button>
     </form>
   );
 };

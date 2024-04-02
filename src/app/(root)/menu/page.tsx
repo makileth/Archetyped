@@ -15,7 +15,7 @@ export default function Menu() {
   return (
     <section className="min-h-[100vh] max-w-4xl mx-auto py-36">
       <ProfilePage />
-      <div className="flex flex-1 flex-col md:flex-row my-12 gap-6 mx-auto">
+      <div className="flex flex-1 flex-col md:flex-row px-1 gap-4 md:gap-0 lg:px-0 my-6 mx-auto">
         <CreateChar />
         <ManageChar />
       </div>

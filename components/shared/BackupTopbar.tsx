@@ -139,12 +139,12 @@ const Topbar = () => {
               </SignedIn>
             ) : (
               <div className="flex flex-row gap-4">
-                <Link className="px-4 py-2 text-black" href="/sign-in">
+                <Link className="px-4 py-2 text-neutral-900" href="/sign-in">
                   <p>&larr; Sign in</p>
                 </Link>
 
                 <Link
-                  className="px-4 py-2 bg-black rounded-[10px] text-white hover:bg-white hover:border-1 hover:border-black duration-300 transition"
+                  className="px-4 py-2 bg-neutral-900 rounded-[10px] text-white hover:bg-white hover:border-1 hover:border-neutral-900 duration-300 transition"
                   href="/sign-up"
                 >
                   <p>Sign up</p>
@@ -202,7 +202,7 @@ const Topbar = () => {
                     </SignedIn>
                   ) : (
                     <Link
-                      className="px-4 py-2 bg-black rounded-[10px] text-white"
+                      className="px-4 py-2 bg-neutral-900 rounded-[10px] text-white"
                       href="/sign-in"
                     >
                       <p>Sign in</p>
@@ -217,7 +217,7 @@ const Topbar = () => {
       // <nav className="topbar">
       //   <Link href="/" className="flex items-center gap-4">
       //     <Image src="/assets/CustomThreadsLogo.svg" alt="" width={48} height={48} />
-      //     <p className="max-xs:hidden text-black text-[24px] font-bold">Character<span className="text-blue-500">Verse</span></p>
+      //     <p className="max-xs:hidden text-neutral-900 text-[24px] font-bold">Character<span className="text-blue-500">Verse</span></p>
       //   </Link>
       //   <div className="flex items-center gap-1">
       //     <div className=" flex flex-row">

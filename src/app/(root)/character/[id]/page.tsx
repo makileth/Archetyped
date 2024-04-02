@@ -10,24 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import DeleteButton from "../../../../../components/ui/DeleteButton";
 import CharSheetButtons from "../../../../../components/ui/CharSheetButtons";
-import {
-  faerunGods,
-  characterVoices,
-  CharacterConceptTip,
-  TraitsTip,
-  FlawsTip,
-  VoiceTip,
-  DeityTip,
-  CatchPhraseTip,
-  HabitsQuirksTip,
-  FearsTip,
-  SecretTip,
-  ConflictTip,
-  BackstoryTip,
-  GoalsMotivationsTip,
-  ReasonTip,
-  IdealTip,
-} from "../../../../../constants";
+import { Tips } from "../../../../../constants";
 
 type CharSheetInputs = {
   id: string;
@@ -80,7 +63,7 @@ type ImageType = {
 };
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 
@@ -103,17 +86,6 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <div className="max-w-4xl pt-[5rem] md:py-36 lg:py-48 min-h-[100vh] mx-auto justify-center items-center">
-        {/* <div className="md:flex w-full hidden">
-          <Link
-            className="px-4 py-2 flex flex-row gap-2 text-black font-bold"
-            href="/menu"
-          >
-            <p className="hover:translate-x-[-3px] duration-300 transition">
-              &larr;{" "}
-            </p>{" "}
-            <p> Back</p>
-          </Link>
-        </div> */}
         <div className="mx-auto max-w-4xl rounded-2xl shadow-2xl border-[1.5px] items-start justify-between flex flex-col md:flex-row">
           {/* Column 1 */}
 
@@ -139,7 +111,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 />
               )}
             </div>
-            <h1 className=" mb-2 text-center text-lg font-bold text-white text-clip">
+            <h1 className=" mb-2 text-center overflow-x-auto text-lg font-bold text-white text-clip">
               {singleCharacter.characterName}
             </h1>
             <hr />
@@ -189,16 +161,16 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
             <div className="flex md:flex-row flex-col w-full h-full">
               {/* Column 2 */}
               <div className="w-full md:w-1/2 justify-start bg-white py-2 md:py-4 h-full p-4 flex flex-col md:mt-0 mt-[1.5rem]">
-                <h1 className="text-black text-2xl font-bold">Personality</h1>
+                <h1 className="text-neutral-900 text-2xl font-bold">Personality</h1>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       ⚛️ Character's Concept
                     </Label>
-                    <ToolTip content={CharacterConceptTip} />
+                    <ToolTip content={Tips.CharacterConcept} />
                   </div>
 
-                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-3 bg-transparent  border-neutral-400 border-[1px] text-black">
+                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-3 bg-transparent  border-neutral-400 border-[1px] text-neutral-900">
                     <p className="line-clamp-1 overflow-x-auto">
                       {singleCharacter.concept}
                     </p>
@@ -206,10 +178,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🎭 Traits
                     </Label>
-                    <ToolTip content={TraitsTip} />
+                    <ToolTip content={Tips.Traits} />
                   </div>
 
                   <div className="flex flex-row md:w-[16.6rem] overflow-x-auto gap-2">
@@ -217,10 +189,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       Badges.traits.map((tr) => (
                         <div
                           key={tr.title}
-                          className={`rounded-full relative group duration-300 transition bg-${tr.color} px-2.5 py-[0.20rem] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center max-w-[10rem] shadow-md text-white text-[0.80rem] leading-5`}
+                          className={`rounded-full relative group duration-300 transition bg-${tr.color} px-2.5 py-[0.20rem] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-max text-white text-[0.80rem] leading-5`}
                           aria-label="badge text"
                         >
-                          <span className="inline-block mx-auto overflow-hidden max-w-full whitespace-nowrap">
+                          <span className="inline-block mx-auto overflow-hidden w-full whitespace-nowrap">
                             {tr.title}
                           </span>
                         </div>
@@ -229,10 +201,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🌩️ Flaws
                     </Label>
-                    <ToolTip content={FlawsTip} />
+                    <ToolTip content={Tips.Flaws} />
                   </div>
 
                   <div className="flex md:w-[16.6rem] flex-row overflow-x-auto  gap-2">
@@ -240,10 +212,10 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                       Badges.flaws.map((fl) => (
                         <div
                           key={fl.title}
-                          className=" rounded-full relative group duration-300 transition  bg-red-500 px-2.5 py-[0.20rem] font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center max-w-[10rem] shadow-md text-white text-[0.80rem] leading-5"
+                          className=" rounded-full relative group duration-300 transition  bg-red-500 px-2.5 py-[0.20rem] font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 flex items-center justify-center w-max text-white text-[0.80rem] leading-5"
                           aria-label="badge text"
                         >
-                          <span className=" inline-block mx-auto overflow-hidden max-w-full whitespace-nowrap">
+                          <span className="inline-block mx-auto overflow-hidden w-full whitespace-nowrap">
                             {fl.title}
                           </span>
                         </div>
@@ -251,24 +223,24 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
 
                   <div className="flex flex-row w-full gap-2">
-                    <div className="flex flex-col gap-2 py-2 text-black">
+                    <div className="flex flex-col gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
-                        <Label htmlFor="header" className="text-black ">
+                        <Label htmlFor="header" className="text-neutral-900 ">
                           🔔 Voice
                         </Label>
-                        <ToolTip content={VoiceTip} />
+                        <ToolTip content={Tips.Voice} />
                       </div>
 
                       <div className="px-4 py-2 text-[12px] capitalize  bg-transparent border-[1px] border-neutral-400 rounded-[10px]">
                         <p>{singleCharacter.voice}</p>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 py-2 text-black">
+                    <div className="flex flex-col gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
-                        <Label htmlFor="header" className="text-black ">
+                        <Label htmlFor="header" className="text-neutral-900 ">
                           🕌 Deity
                         </Label>
-                        <ToolTip content={DeityTip} />
+                        <ToolTip content={Tips.Deity} />
                       </div>
 
                       <div className="px-4 py-2 text-[12px] capitalize bg-transparent border-[1px] border-neutral-400 rounded-[10px]">
@@ -278,13 +250,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-black ">
+                      <Label htmlFor="header" className="text-neutral-900 ">
                         🉐 Catchphrase
                       </Label>
-                      <ToolTip content={CatchPhraseTip} />
+                      <ToolTip content={Tips.CatchPhrase} />
                     </div>
 
-                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                       <p className="line-clamp-1  overflow-x-auto">
                         {singleCharacter.catchphrase}
                       </p>
@@ -292,13 +264,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                   <div className="flex flex-col gap-2 pb-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-black ">
+                      <Label htmlFor="header" className="text-neutral-900 ">
                         ✨ Habit/Quirk
                       </Label>
-                      <ToolTip content={HabitsQuirksTip} />
+                      <ToolTip content={Tips.HabitsQuirks} />
                     </div>
 
-                    <div className="text-[12px] md:w-[16.6rem] w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <div className="text-[12px] md:w-[16.6rem] w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                       <p className="line-clamp-1  overflow-x-auto">
                         {singleCharacter.habitsquirks}
                       </p>
@@ -306,13 +278,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-black ">
+                      <Label htmlFor="header" className="text-neutral-900 ">
                         👺 Fears & Phobias
                       </Label>
-                      <ToolTip content={FearsTip} />
+                      <ToolTip content={Tips.Fears} />
                     </div>
 
-                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                       <p className="line-clamp-1  overflow-x-auto">
                         {singleCharacter.fears}
                       </p>
@@ -320,13 +292,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-black ">
+                      <Label htmlFor="header" className="text-neutral-900 ">
                         🎇 Ideal
                       </Label>
-                      <ToolTip content={SecretTip} />
+                      <ToolTip content={Tips.Ideal} />
                     </div>
 
-                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                       <p className="line-clamp-1  overflow-x-auto">
                         {singleCharacter.ideal}
                       </p>
@@ -334,13 +306,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                   <div className="flex flex-col gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-black ">
+                      <Label htmlFor="header" className="text-neutral-900 ">
                         🤫 Secret
                       </Label>
-                      <ToolTip content={SecretTip} />
+                      <ToolTip content={Tips.Secret} />
                     </div>
 
-                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                    <div className="text-[12px] md:w-[16.6rem] h-[2rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                       <p className="line-clamp-1  overflow-x-auto">
                         {singleCharacter.secret}
                       </p>
@@ -352,15 +324,15 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
               {/* Column 3 */}
               <div className="w-full md:w-1/2 bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl]">
                 <hr className="mb-[0.75rem] md:hidden block" />
-                <h1 className="text-black text-2xl font-bold">Backstory</h1>
+                <h1 className="text-neutral-900 text-2xl font-bold">Backstory</h1>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🏞️ Motherland
                     </Label>
                   </div>
 
-                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                     <p className="line-clamp-1  overflow-x-auto">
                       {singleCharacter.motherland}
                     </p>
@@ -368,13 +340,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       ⚡ Conflict
                     </Label>
-                    <ToolTip content={ConflictTip} />
+                    <ToolTip content={Tips.Conflict} />
                   </div>
 
-                  <div className="text-[12px] md:w-[16.6rem]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
+                  <div className="text-[12px] md:w-[16.6rem]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
                     <p className="line-clamp-1  overflow-x-auto">
                       {singleCharacter.conflict}
                     </p>
@@ -382,13 +354,13 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🎞️ Background
                     </Label>
-                    <ToolTip content={BackstoryTip} />
+                    <ToolTip content={Tips.Backstory} />
                   </div>
 
-                  <div className="rounded-[15px] md:w-[16.6rem] w-full border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                  <div className="rounded-[15px] md:w-[16.6rem] w-full border-[1px] px-3 py-2 border-gray-400 text-[12px] text-neutral-900">
                     <p className="h-[14.8rem] md:w-[15.2rem] overflow-y-auto overflow-x-hidden break-words">
                       {singleCharacter.backstory}
                     </p>
@@ -397,14 +369,14 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
 
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black">
+                    <Label htmlFor="header" className="text-neutral-900">
                       💫 My Goals & Motivations
                     </Label>
-                    <ToolTip content={GoalsMotivationsTip} />
+                    <ToolTip content={Tips.GoalsMotivations} />
                   </div>
 
                   <p
-                    className=" h-[5rem] md:w-[16.6rem] overflow-y-auto rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-black"
+                    className=" h-[5rem] md:w-[16.6rem] break-words overflow-y-auto rounded-[15px] border-[1px] px-3 py-2 border-gray-400  text-[12px] text-neutral-900"
                     style={{ resize: "none" }}
                   >
                     {singleCharacter.motivation}
@@ -413,43 +385,45 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
 
                 <div className="flex flex-col gap-2 pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🤝 Reason to join the team
                     </Label>
-                    <ToolTip content={SecretTip} />
+                    <ToolTip content={Tips.Reason} />
                   </div>
 
-                  <div className="text-[12px] md:w-[16.6rem] rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-black">
-                    <p>{singleCharacter.reasonToJoin}</p>
+                  <div className="text-[12px] md:w-[16.6rem]  rounded-full py-1.5 px-4 bg-transparent border-neutral-400 border-[1px] text-neutral-900">
+                    <p className="line-clamp-1  overflow-x-auto">
+                      {singleCharacter.reasonToJoin}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="w-full  bg-white  h-full p-4 flex flex-col rounded-t-xl md:rounded-r-xl">
               <hr className="md:hidden block mb-[0.75rem]" />
-              <h1 className="text-black text-2xl pb-2 font-bold">
+              <h1 className="text-neutral-900 text-2xl pb-2 font-bold">
                 Relationships
               </h1>
               <hr className="md:block hidden " />
               <div className="flex flex-col md:flex-row items-center md:gap-8 justify-between">
                 <div className="flex flex-col py-2 w-full md:w-1/2">
                   <div className="flex  flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       👨‍👩‍👧‍👦 Family
                     </Label>
 
-                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-neutral-900">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.family}
                       </p>
                     </div>
                   </div>
                   <div className="flex  flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🧑‍🤝‍🧑 NPCs
                     </Label>
 
-                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-neutral-900">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.NPCs}
                       </p>
@@ -458,22 +432,22 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <div className="flex flex-col py-2 w-full md:w-1/2">
                   <div className="flex  flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       👯 PCs
                     </Label>
 
-                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-neutral-900">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.playerPCs}
                       </p>
                     </div>
                   </div>
                   <div className="flex  flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-black ">
+                    <Label htmlFor="header" className="text-neutral-900 ">
                       🚩 Organisations
                     </Label>
 
-                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-black">
+                    <div className="rounded-[15px] md:w-[16.6rem] h-[8rem] border-[1px] px-3 py-2 border-gray-400 text-[12px] text-neutral-900">
                       <p className="max-h-[7rem] my-auto overflow-y-auto">
                         {singleCharacter.organisations}
                       </p>
@@ -484,7 +458,7 @@ const SingleCharacterPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
-        <CharSheetButtons charId={singleCharacter.id} />
+        <CharSheetButtons charId={singleCharacter.id} charEditPath="edit-coc" charPath="coc-character"/>
       </div>
     </>
   );

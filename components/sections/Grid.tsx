@@ -14,7 +14,7 @@ export default function Grid() {
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r  from-pink-400 to-primary opacity-0 group-hover:opacity-20 rounded-lg blur-[50px] transition-all duration-500 ease-in-out " />
-          <div className="md:w-3/4 w-full md:h-[90%] h-[40%] bg-black rounded-2xl    absolute bottom-[85%] left-[7.5rem] md:bottom-[10rem] md:left-[30rem] overflow-hidden">
+          <div className="md:w-3/4 w-full md:h-[90%] h-[40%] bg-neutral-900 rounded-2xl    absolute bottom-[85%] left-[7.5rem] md:bottom-[10rem] md:left-[30rem] overflow-hidden">
             <div className="flex flex-row w-full h-full">
               <div className="w-1/3 h-full">
                 <Image
@@ -47,7 +47,7 @@ export default function Grid() {
           </div>
           <div className="flex flex-col pl-2 items-start gap-4 justify-between z-10">
             <div className="p-5 bg-white opacity-50 rounded-lg">
-              <BookOpenIcon className="text-black opacity-100" />
+              <BookOpenIcon className="text-neutral-900 opacity-100" />
             </div>
 
             <h2 className="text-white font-semibold text-xl">
@@ -67,7 +67,7 @@ export default function Grid() {
               onClick={() => {
                 router.push("/create");
               }}
-              className="bg-white opacity-50 hover:bg-black hover:text-white backdrop-blur-2xl text-black text-opacity-100 z-10 transition-all duration-500 ease-in-out transform "
+              className="bg-white opacity-50 hover:bg-neutral-900 hover:text-white backdrop-blur-2xl text-neutral-900 text-opacity-100 z-10 transition-all duration-500 ease-in-out transform "
             >
               Start Creating
             </Button>
@@ -78,7 +78,7 @@ export default function Grid() {
             <div className="absolute inset-0 bg-pink-500 opacity-0 group-hover:opacity-10 rounded-lg blur-[50px] transition-all duration-500 ease-in-out" />
             <div className="flex items-start pl-2 gap-4 flex-col justify-between z-10">
               <div className="p-5 shadow-lg bg-blue-100 opacity-50 rounded-lg">
-                <LightbulbIcon className="text-black opacity-100" />
+                <LightbulbIcon className="text-neutral-900 opacity-100" />
               </div>
               <h2 className="text-neutral-900 text-lg font-semibold">
                 Learn to make better characters & stories
@@ -92,7 +92,7 @@ export default function Grid() {
                 storytelling skills. Best of all, it's all here for you,
                 absolutely free.
               </p>
-              <Button className="bg-primary hover:bg-black ext-white backdrop-blur-2xl  text-opacity-100 z-10 transition-all duration-500 ease-in-out transform ">
+              <Button className="bg-primary hover:bg-neutral-900 ext-white backdrop-blur-2xl  text-opacity-100 z-10 transition-all duration-500 ease-in-out transform ">
                 Learn More
               </Button>
             </div>
@@ -101,7 +101,7 @@ export default function Grid() {
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-lg blur-[50px] transition-all duration-500 ease-in-out" />
             <div className="flex pl-2 items-start gap-4 flex-col  justify-between z-10">
               <div className="p-5 shadow-lg bg-blue-100 opacity-50 rounded-lg">
-                <MessageCircleIcon className="text-black opacity-100" />
+                <MessageCircleIcon className="text-neutral-900 opacity-100" />
               </div>
               <h2 className="text-white font-semibold">
                 Concentrate on roleplay & personality

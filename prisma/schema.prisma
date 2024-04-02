@@ -42,6 +42,43 @@ model Character {
   flaws           Json[]
 }
 
+model CocCharacter {
+  id              String   @id @default(cuid())
+  authorId        String
+  authorEmail     String
+  img             String?
+  characterName   String?
+  gender          String?
+  concept         String?
+  backstory       String?
+  motivation      String?
+  reasonToJoin    String?
+  family          String?
+  playerPCs       String?
+  motherland      String?
+  createdAt       DateTime @default(now())
+  NPCs            String?
+  age             String?
+  catchphrase     String?
+  conflict        String?
+  religion           String?
+  fears           String?
+  habitsquirks    String?
+  height          String?
+  organisations   String?
+  occupation      String?
+  birthday        String?
+  secret          String?
+  voice           String?
+  weight          String?
+  backgroundColor String?
+  ideal           String?
+  description     String?
+  traits          Json[]
+  flaws           Json[]
+  interests       String?
+}
+
 model User {
   id            String   @id @default(cuid())
   createdAt     DateTime @default(now())

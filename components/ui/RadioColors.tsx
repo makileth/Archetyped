@@ -58,9 +58,9 @@ export function RadioColors({ onColorSelect }: RadioColorsProps) {
       </div>
       <div className="flex items-center space-x-2">
         <RadioGroupItem
-          value="black"
+          value="neutral-900"
           id="6"
-          className="bg-black text-white border-transparent"
+          className="bg-neutral-900 text-white border-transparent"
         />
       </div>
     </RadioGroup>

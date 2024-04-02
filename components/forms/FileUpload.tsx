@@ -31,7 +31,7 @@ const FileUpload: React.FC = () => {
         <input
           type="text"
           id="URLreciever"
-          className="w-[10rem] bg-white h-[2rem] shadow-lg rounded-2xl text-black p-4 text-[12px] my-3"
+          className="w-[10rem] bg-white h-[2rem] shadow-lg rounded-2xl text-neutral-900 p-4 text-[12px] my-3"
           placeholder="Img Url here!"
         />
       </div>

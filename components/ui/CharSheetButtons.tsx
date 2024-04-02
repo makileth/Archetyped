@@ -7,16 +7,25 @@ import { CopyButton } from "./CopyButton";
 import EditButton from "./EditButton";
 import Link from "next/link";
 
-const CharSheetButtons = ({ charId }: { charId: string }) => {
+const CharSheetButtons = ({
+  charId,
+  charPath,
+  charEditPath,
+}: {
+  charId: string;
+  charPath: string;
+  charEditPath: string;
+}) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-row  px-4  w-full my-2 h-max justify-center gap-1 md:gap-3 items-center">
+    <div className="flex z-[30] flex-row  px-4  w-full my-2 h-max justify-center gap-1 md:gap-3 items-center">
       <button
+        type="button"
         onClick={() => {
           router.back();
         }}
-        className="text-black hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-black transition duration-300 rounded-full flex  top-1.5 right-[6rem]"
+        className="text-neutral-900 hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-neutral-900 transition duration-300 rounded-full flex  top-1.5 right-[6rem]"
       >
         <div className="flex flex-row justify-between items-center mt-[0.10rem]">
           <div className=" w-[1rem] h-[1rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">
@@ -33,8 +42,8 @@ const CharSheetButtons = ({ charId }: { charId: string }) => {
       </button>
 
       <Link
-        href={`/editor/${charId}`}
-        className="text-black flex hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-black transition duration-300 rounded-full top-1.5 right-[6rem]"
+        href={`/${charEditPath}/${charId}`}
+        className="text-neutral-900 flex hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-neutral-900 transition duration-300 rounded-full top-1.5 right-[6rem]"
       >
         <div className="flex flex-row justify-between items-center mt-[0.10rem]">
           <div className=" w-[1rem] h-[1rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">
@@ -49,7 +58,7 @@ const CharSheetButtons = ({ charId }: { charId: string }) => {
           <p className="px-2 font-semibold text-sm">Edit</p>
         </div>
       </Link>
-      <CopyButton id={charId} />
+      <CopyButton id={charId} path={charPath} />
     </div>
   );
 };

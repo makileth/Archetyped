@@ -1,0 +1,32 @@
+/* custom-toastify.css */
+
+/* Custom style for the toast container */
+.custom-toast-container {
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* Custom style for each toast */
+.custom-toast {
+  /* Add your custom styles for each toast */
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Custom style for success toast */
+.custom-toast--success {
+  /* Add your custom styles for success toast */
+  background-color: #28a745;
+}
+
+/* Custom style for error toast */
+.custom-toast--error {
+  /* Add your custom styles for error toast */
+  background-color: #dc3545;
+}
+
+.custom-progress-bar-theme--light {
+  --toastify-color-progress-light: #d6a3e4;
+}

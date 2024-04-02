@@ -18,10 +18,14 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const DeleteButton = ({
   id,
-  refetchCharacters,
+  refetchDndCharacters,
+  refetchCocCharacters,
+  path,
 }: {
   id: string;
-  refetchCharacters: () => void;
+  refetchDndCharacters: () => void;
+  refetchCocCharacters: () => void;
+  path: string;
 }) => {
   const queryClient = useQueryClient();
 
@@ -32,7 +36,7 @@ const DeleteButton = ({
   const userId = user?.id;
 
   const handleDelete = async () => {
-    const response = await fetch(`https://character-verse.vercel.app/api/CharSheets/${id}`, {
+    const response = await fetch(`http://localhost:3000/api/${path}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +47,8 @@ const DeleteButton = ({
     });
 
     if (response.ok) {
-      await refetchCharacters();
+      await refetchDndCharacters();
+      await refetchCocCharacters();
       toast("💥 Character deleted successfully");
     } else {
       const data = await response.json();
@@ -68,40 +73,29 @@ const DeleteButton = ({
           <p className="px-2 font-semibold text-sm">Delete</p>
         </div>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="md:w-[30%] rounded-2xl">
         <DialogHeader>
-          <DialogTitle className="text-black">Are you absolutely sure?</DialogTitle>
+          <DialogTitle className="text-neutral-900">
+            Are you absolutely sure?
+          </DialogTitle>
           <DialogDescription className="pt-1 pb-6">
             This action cannot be undone. This will permanently delete your
             character from our servers.
           </DialogDescription>
-          <div className=" flex flex-row gap-2">
-            {/* <button
-              onClick={handleDelete}
-              className="bg-red-500 px-4 py-2 rounded-md w-max text-white hover:bg-black transition duration-300"
-              type="submit"
-            >
-              Delete
-            </button>
-            <button
-              type="submit"
-              className="bg-white border-[2px] hover:border-transparent border-neutral-600 px-4 py-2 rounded-md w-max text-black hover:text-white hover:bg-black transition duration-300"
-            >
-              Cancel
-            </button> */}
-            <DialogClose asChild>
+          <div className=" flex flex-row gap-2 justify-between ">
+            <DialogClose asChild className="h-[2rem]">
               <Button
                 onClick={handleDelete}
-                className="bg-red-500 px-4 py-2 rounded-md w-max text-white hover:bg-black transition duration-300"
+                className="bg-red-500 rounded-full px-4 w-max text-white hover:bg-neutral-900 transition duration-300"
                 type="submit"
               >
                 Delete
               </Button>
             </DialogClose>
-            <DialogClose asChild>
+            <DialogClose asChild className="h-[2rem]">
               <Button
                 type="button"
-                className="hover:bg-black hover:text-white "
+                className="hover:bg-neutral-900 rounded-full bg-neutral-200 hover:text-white "
                 variant="secondary"
               >
                 Close

@@ -10,10 +10,10 @@ const AboutCardsMobile = () => {
             <div className="mx-auto items-center flex justify-center w-full mb-2">
               <Image src="/assets/star.svg" alt="star" width={42} height={42} />
             </div>
-            <h1 className="text-[24px]  text-black font-bold">
+            <h1 className="text-[24px]  text-neutral-900 font-bold">
               Give us a Star
             </h1>
-            <p className="text-black mt-2">
+            <p className="text-neutral-900 mt-2">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
               nesciunt quaerat cupiditate nisi sunt officia nostrum ex debitis
               itaque iste voluptas repudiandae error in quidem dolorem veniam,
@@ -34,10 +34,10 @@ const AboutCardsMobile = () => {
                 height={42}
               />
             </div>
-            <h1 className="text-[24px]  text-black font-bold">
+            <h1 className="text-[24px]  text-neutral-900 font-bold">
               Are you a developer?
             </h1>
-            <p className="text-black mt-2">
+            <p className="text-neutral-900 mt-2">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
               nesciunt quaerat cupiditate nisi sunt officia nostrum ex debitis
               itaque iste voluptas repudiandae error in quidem dolorem veniam,

@@ -4,11 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const EditButton = ({ id }: { id: string }) => {
+const EditButton = ({ id, path }: { id: string; path: string }) => {
   return (
     <Link
-      href={`/editor/${id}`}
-      className="text-black hover:border-transparent hover:text-white w-max h-[1.50rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-black transition duration-300 rounded-full absolute  top-1.5 right-[6rem]"
+      href={`${path}/${id}`}
+      className="text-neutral-900 hover:border-transparent hover:text-white w-max h-[1.50rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-neutral-900 transition duration-300 rounded-full absolute  top-1.5 right-[6rem]"
     >
       <div className="flex flex-row justify-between items-center mt-[0.10rem]">
         <div className=" w-[1rem] h-[1rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">

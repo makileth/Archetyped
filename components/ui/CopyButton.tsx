@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { useState } from "react";
 
-export function CopyButton({ id }: { id: string }) {
+export function CopyButton({ id, path }: { id: string; path: string }) {
   const router = useRouter();
 
   const [copied, setCopied] = useState(false);
@@ -25,7 +25,7 @@ export function CopyButton({ id }: { id: string }) {
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(
-        `https://character-verse.vercel.app/character/${id}`
+        `http://localhost:3000/${path}/${id}`
       );
       console.log("URL copied to clipboard");
       setCopied(true);
@@ -39,7 +39,7 @@ export function CopyButton({ id }: { id: string }) {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="text-black flex hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-black transition duration-300 rounded-full top-1.5 right-[6rem]"
+          className="text-neutral-900 flex hover:border-transparent hover:text-white w-max px-4 md:px-[2rem] h-[2rem] border-[0.5px] border-neutral-200 justify-center items-center bg-white hover:bg-neutral-900 transition duration-300 rounded-full top-1.5 right-[6rem]"
         >
           <div className="flex flex-row justify-between items-center mt-[0.10rem]">
             <div className=" w-[1rem] h-[1rem] justify-center items-center ml-2 bg-neutral-200 rounded-full">
@@ -57,9 +57,9 @@ export function CopyButton({ id }: { id: string }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-black">Share link</DialogTitle>
+          <DialogTitle className="text-neutral-900">Share link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able see your character sheet.
+            Anyone who has this link will be able to see your character sheet.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
@@ -69,12 +69,13 @@ export function CopyButton({ id }: { id: string }) {
             </Label>
             <Input
               id="link"
-              defaultValue={`https://character-verse.vercel.app/character/${id}`}
+              defaultValue={`http://localhost:3000/${path}/${id}`}
               readOnly
+              className="rounded-full"
             />
           </div>
 
-          <Button onClick={handleCopyClick} size="sm" className="px-3">
+          <Button onClick={handleCopyClick} size="sm" className="px-3 h-8">
             <span className="sr-only">Copy</span>
             <Copy className="h-4 w-4" />
           </Button>
@@ -90,7 +91,7 @@ export function CopyButton({ id }: { id: string }) {
           <DialogClose asChild>
             <Button
               type="button"
-              className="hover:bg-black transition duration-300 w-[25%] hover:text-white"
+              className="hover:bg-neutral-900 rounded-full transition duration-300 w-[25%] hover:text-white"
               variant="secondary"
               onClick={() => {
                 setCopied(false);
