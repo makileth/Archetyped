@@ -53,7 +53,7 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
+  const res = await fetch(`https://archetyped.vercel.app/api/CharSheets/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -76,7 +76,7 @@ const DndCharSheet = ({
 
   const getDndCharactersData = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/CharSheets?sortBy=createdAt",
+      "https://archetyped.vercel.app/api/CharSheets?sortBy=createdAt",
       {
         cache: "no-store",
       }
@@ -89,7 +89,7 @@ const DndCharSheet = ({
 
   const getCocCharactersData = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/cocCharSheets?sortBy=createdAt",
+      "https://archetyped.vercel.app/api/cocCharSheets?sortBy=createdAt",
       {
         cache: "no-store",
       }
@@ -496,7 +496,7 @@ const DndCharSheet = ({
 
       
 
-          const res = await fetch(`http://localhost:3000/api/${submitPath}`, {
+          const res = await fetch(`https://archetyped.vercel.app/api/${submitPath}`, {
             method: method,
             body: JSON.stringify({
               ...dndCharSheetInputs,

@@ -25,7 +25,7 @@ export function CopyButton({ id, path }: { id: string; path: string }) {
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(
-        `http://localhost:3000/${path}/${id}`
+        `https://archetyped.vercel.app/${path}/${id}`
       );
       console.log("URL copied to clipboard");
       setCopied(true);
@@ -69,7 +69,7 @@ export function CopyButton({ id, path }: { id: string; path: string }) {
             </Label>
             <Input
               id="link"
-              defaultValue={`http://localhost:3000/${path}/${id}`}
+              defaultValue={`https://archetyped.vercel.app/${path}/${id}`}
               readOnly
               className="rounded-full"
             />

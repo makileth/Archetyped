@@ -57,7 +57,7 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/cocCharSheets/${id}`, {
+  const res = await fetch(`https://archetyped.vercel.app/api/cocCharSheets/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -89,7 +89,7 @@ const CocCharSheet = ({
 
   const getDndCharactersData = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/CharSheets?sortBy=createdAt",
+      "https://archetyped.vercel.app/api/CharSheets?sortBy=createdAt",
       {
         cache: "no-store",
       }
@@ -102,7 +102,7 @@ const CocCharSheet = ({
 
   const getCocCharactersData = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/cocCharSheets?sortBy=createdAt",
+      "https://archetyped.vercel.app/api/cocCharSheets?sortBy=createdAt",
       {
         cache: "no-store",
       }
@@ -486,7 +486,7 @@ const CocCharSheet = ({
 
   
 
-          const res = await fetch(`http://localhost:3000/api/${submitPath}`, {
+          const res = await fetch(`https://archetyped.vercel.app/api/${submitPath}`, {
             method: method,
             body: JSON.stringify({
               ...cocCharSheetInputs,

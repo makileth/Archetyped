@@ -16,7 +16,7 @@ type Character = dndCharSheetInputsDb | cocCharSheetInputsDb;
 
 const getCharacterData = async () => {
   const res = await fetch(
-    "http://localhost:3000/api/CharSheets?sortBy=createdAt",
+    "https://archetyped.vercel.app/api/CharSheets?sortBy=createdAt",
     {
       cache: "no-store",
     }
@@ -29,7 +29,7 @@ const getCharacterData = async () => {
 
 const getCocCharactersData = async () => {
   const res = await fetch(
-    "http://localhost:3000/api/cocCharSheets?sortBy=createdAt",
+    "https://archetyped.vercel.app/api/cocCharSheets?sortBy=createdAt",
     {
       cache: "no-store",
     }

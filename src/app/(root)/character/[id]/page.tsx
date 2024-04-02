@@ -63,7 +63,7 @@ type ImageType = {
 };
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/CharSheets/${id}`, {
+  const res = await fetch(`https://archetyped.vercel.app/api/CharSheets/${id}`, {
     cache: "no-store",
   });
 

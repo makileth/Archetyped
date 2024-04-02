@@ -36,7 +36,7 @@ const DeleteButton = ({
   const userId = user?.id;
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:3000/api/${path}/${id}`, {
+    const response = await fetch(`https://archetyped.vercel.app/api/${path}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
