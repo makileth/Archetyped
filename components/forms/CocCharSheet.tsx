@@ -498,13 +498,13 @@ const CocCharSheet = ({
 
           const data = await res.json();
 
-          if (submitPath == "POST") {
+          if (method === "POST") {
             toast(
-              `Character ${cocCharSheetInputs.characterName} Created Successfully!`
+              `Character ${cocCharSheetInputs.characterName} created successfully!`
             );
           } else {
             toast(
-              `Character ${cocCharSheetInputs.characterName} Updated Successfully!`
+              `Character ${cocCharSheetInputs.characterName} updated successfully!`
             );
           }
 
