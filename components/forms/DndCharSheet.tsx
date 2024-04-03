@@ -591,7 +591,9 @@ const DndCharSheet = ({
 
       <form
         action=""
-        className={`relative flex flex-col w-screen md:w-full ${isReadOnly && "md:mt-0 mt-[8rem]"}`}
+        className={`relative flex flex-col w-screen md:w-full ${
+          isReadOnly && "md:mt-0 mt-[8rem]"
+        }`}
         onSubmit={handleSubmit}
       >
         <Image
@@ -678,8 +680,8 @@ const DndCharSheet = ({
             )}
             <hr />
             <div className="px-3 md:px-2 flex flex-row w-full h-max">
-              <div className="flex flex-row items-center justify-around mx-auto  w-full my-3">
-                <div className="flex flex-col text-md  items-center">
+              <div className="flex flex-row items-center justify-around  w-full my-3">
+                <div className="flex flex-col text-md w-full mx-auto items-center">
                   <div className="flex flex-row justify-between mb-2 w-full">
                     <div className="flex flex-col gap-1 w-1/3 items-center">
                       <h4 className="font-semibold  text-white">Height</h4>
@@ -786,7 +788,6 @@ const DndCharSheet = ({
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col text-md items-center"></div>
               </div>
             </div>
             <hr />
@@ -808,14 +809,14 @@ const DndCharSheet = ({
                 readOnly={isReadOnly}
               />
               <p
-                className={`absolute bottom-0 md:bottom-[-0.5rem] text-sm left-5 ${
+                className={`absolute bg-white rounded-full px-4 py-0.5 bottom-[-0.3rem] md:bottom-[-0.6rem] text-sm left-2 ${
                   dndCharSheetInputs?.description?.length > 300
                     ? "block"
                     : "hidden"
                 } ${
                   dndCharSheetInputs?.description?.length > 900
                     ? "text-red-500"
-                    : "text-white"
+                    : "text-neutral-900"
                 }`}
               >
                 {dndCharSheetInputs?.description?.length}/1000
@@ -826,7 +827,11 @@ const DndCharSheet = ({
           <div className="flex flex-col w-full h-full">
             <div className="flex md:flex-row flex-col w-full h-full">
               {/* Column 2 */}
-              <div className="w-full md:w-1/2 justify-start bg-white py-2 md:py-4 h-full p-4 flex flex-col md:mt-0 mt-[1.5rem]">
+              <div
+                className={`w-full md:w-1/2 justify-start bg-white py-2 md:py-4 h-full ${
+                  isMobile && "pl-1 pr-[0.60rem]"
+                } p-4 flex flex-col md:mt-0 mt-[1.5rem]`}
+              >
                 <h1 className="text-neutral-900 text-2xl font-bold">
                   Personality
                 </h1>
@@ -859,7 +864,7 @@ const DndCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🎭 Traits
+                      🎭 Traits*
                     </Label>
                     <ToolTip content={Tips.Traits} />
                   </div>
@@ -945,7 +950,7 @@ const DndCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🌩️ Flaws
+                      🌩️ Flaws*
                     </Label>
                     <ToolTip content={Tips.Flaws} />
                   </div>
@@ -1195,7 +1200,11 @@ const DndCharSheet = ({
               </div>
 
               {/* Column 3 */}
-              <div className="w-full md:w-1/2 bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl]">
+              <div
+                className={`w-full md:w-1/2 ${
+                  isMobile && "pl-1 pr-[0.60rem]"
+                }  bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl`}
+              >
                 <hr className="mb-[0.75rem] md:hidden block" />
                 <h1 className="text-neutral-900 text-2xl font-bold">
                   Backstory*
@@ -1338,7 +1347,11 @@ const DndCharSheet = ({
                 </div>
               </div>
             </div>
-            <div className="w-full  bg-white  h-full p-4 flex flex-col rounded-t-xl md:rounded-r-xl">
+            <div
+              className={`${
+                isMobile && "pl-1 pr-[0.60rem]"
+              } w-full  bg-white  h-full p-4 flex flex-col rounded-t-xl md:rounded-r-xl`}
+            >
               <hr className="md:hidden block mb-[0.75rem]" />
               <h1 className="text-neutral-900 text-2xl pb-2 font-bold">
                 Relationships
@@ -1363,7 +1376,7 @@ const DndCharSheet = ({
                       readOnly={isReadOnly}
                     />
                     <p
-                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                      className={`absolute bottom-[-0.6rem] text-xs right-0 ${
                         dndCharSheetInputs?.family?.length > 150
                           ? "block"
                           : "hidden"
@@ -1393,7 +1406,7 @@ const DndCharSheet = ({
                       readOnly={isReadOnly}
                     />
                     <p
-                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                      className={`absolute bottom-[-0.6rem] text-xs right-0 ${
                         dndCharSheetInputs?.NPCs?.length > 150
                           ? "block"
                           : "hidden"
@@ -1425,7 +1438,7 @@ const DndCharSheet = ({
                       readOnly={isReadOnly}
                     />
                     <p
-                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                      className={`absolute bottom-[-0.6rem] text-xs right-0 ${
                         dndCharSheetInputs?.playerPCs?.length > 150
                           ? "block"
                           : "hidden"
@@ -1455,7 +1468,7 @@ const DndCharSheet = ({
                       readOnly={isReadOnly}
                     />
                     <p
-                      className={`absolute bottom-0 md:bottom-[-0.5rem] text-xs right-0 ${
+                      className={`absolute bottom-[-0.6rem] text-xs right-0 ${
                         dndCharSheetInputs?.organisations?.length > 150
                           ? "block"
                           : "hidden"
