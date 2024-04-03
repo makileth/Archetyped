@@ -88,6 +88,12 @@ export function ChooseTemplate({ page }: { page: string }) {
           <Button className="duration-300 transition w-full rounded-2xl hover:bg-primary hover:text-neutral-900 h-[2rem]">
             Start Creating
           </Button>
+        ) : page === "mobileTopBar" ? (
+          <div className="-mx-3 items-center flex bg-gradient-to-r from-transparent to-primary-200 rounded-2xl w-[95%] p-[0.035rem] text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+            <p className="w-full py-[1rem] items-center bg-white p-2 rounded-2xl">
+              Create character
+            </p>
+          </div>
         ) : (
           <p>No page assigned</p>
         )}

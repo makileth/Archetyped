@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       screens: {
         ss: "320px",
+        sx: "380px",
       },
       boxShadow: {
         // Small shadow

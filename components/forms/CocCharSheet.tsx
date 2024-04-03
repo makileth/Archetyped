@@ -57,9 +57,12 @@ type ValidationErrors =
   >;
 
 const getData = async (id: string) => {
-  const res = await fetch(`https://archetyped.vercel.app/api/cocCharSheets/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://archetyped.vercel.app/api/cocCharSheets/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed!");
   }
@@ -249,7 +252,6 @@ const CocCharSheet = ({
         color: randomColorClass(),
       }; // target name is a dynamic key used in order to access the input's data
     });
- 
   };
 
   const handleChangeFlaw = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -322,7 +324,6 @@ const CocCharSheet = ({
       ...prev,
       voice: selectedValue,
     }));
-
   };
 
   const handleDeityChange = (selectedValue: string) => {
@@ -330,7 +331,6 @@ const CocCharSheet = ({
       ...prev,
       deity: selectedValue,
     }));
-
   };
 
   const handleBackgroundColorClick = (selectedColor: string) => {
@@ -339,7 +339,6 @@ const CocCharSheet = ({
       ...prev,
       backgroundColor: selectedColor,
     }));
-
   };
 
   const [selectedColor, setSelectedColor] = useState("red-500");
@@ -412,8 +411,6 @@ const CocCharSheet = ({
         return prevErrors;
       }
     });
-
-
   };
 
   useEffect(() => {
@@ -435,7 +432,6 @@ const CocCharSheet = ({
         setImageUrl(characterData.img);
         setSelectedColor(characterData.backgroundColor);
       } catch (error) {
-     
         setLoading(false);
       } finally {
         setLoading(false);
@@ -484,17 +480,18 @@ const CocCharSheet = ({
             url = imageUrl; // Use the existing imageUrl if no new file is provided
           }
 
-  
-
-          const res = await fetch(`https://archetyped.vercel.app/api/${submitPath}`, {
-            method: method,
-            body: JSON.stringify({
-              ...cocCharSheetInputs,
-              img: url,
-              traits,
-              flaws,
-            }),
-          });
+          const res = await fetch(
+            `https://archetyped.vercel.app/api/${submitPath}`,
+            {
+              method: method,
+              body: JSON.stringify({
+                ...cocCharSheetInputs,
+                img: url,
+                traits,
+                flaws,
+              }),
+            }
+          );
 
           const data = await res.json();
 
@@ -510,7 +507,6 @@ const CocCharSheet = ({
 
           router.push("/menu");
         } catch (err) {
-     
           toast.error("Something went wrong. Please try again later.");
         }
       } else {
@@ -582,7 +578,9 @@ const CocCharSheet = ({
 
       <form
         action=""
-        className="relative flex flex-col w-screen md:w-full "
+        className={`relative flex flex-col w-screen md:w-full ${
+          isReadOnly && "md:mt-0 mt-[8rem]"
+        }`}
         onSubmit={handleSubmit}
       >
         <Image
@@ -625,9 +623,7 @@ const CocCharSheet = ({
                 ) : (
                   <Image
                     src={
-                      imageUrl
-                        ? imageUrl
-                        : "/assets/default-char-picture.png"
+                      imageUrl ? imageUrl : "/assets/default-char-picture.png"
                     }
                     width={1250}
                     height={1250}

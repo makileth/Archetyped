@@ -8,6 +8,7 @@ import {
   useVelocity,
   useAnimationFrame,
   useDragControls,
+  useInView,
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
@@ -16,7 +17,7 @@ const Testimonials = () => {
   const baseY = useMotionValue(20);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
-  const [baseVelocity, setBaseVelocity] = useState(15);
+  const [baseVelocity, setBaseVelocity] = useState(10);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400,
@@ -30,8 +31,10 @@ const Testimonials = () => {
   const directionFactor = useRef<number>(1);
   const [newPosition, setNewPosition] = useState(null);
 
+  const isInView = useInView(ref, { once: true });
+
   useAnimationFrame((t, delta) => {
-    if (newPosition !== null) return; // Stop animation if newPosition is set
+    if (newPosition !== null || !isInView) return; // Stop animation if newPosition is set or section is not in view
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -71,6 +74,10 @@ const Testimonials = () => {
     },
   ];
 
+  const isDesktopScreen = () => {
+    return window.innerWidth >= 1024;
+  };
+
   const dragControls = useDragControls();
 
   return (
@@ -95,14 +102,14 @@ const Testimonials = () => {
               <motion.div
                 className="grid content-center py-6 gap-6 overflow-hidden"
                 style={{ y: newPosition !== null ? newPosition : y }}
-                drag="y"
+                drag={isDesktopScreen() ? "y" : false}
                 dragControls={dragControls}
                 dragConstraints={{ top: -100, bottom: 100 }}
                 onMouseEnter={() => setBaseVelocity(0)}
-                onMouseLeave={() => setBaseVelocity(2)}
+                onMouseLeave={() => setBaseVelocity(7.5)}
                 onDragEnd={(_, info) => {
                   setNewPosition(info.offset.y);
-                  setBaseVelocity(0); // Stop animation after drag
+                  setBaseVelocity(0);
                 }}
               >
                 {cards.map((item, index) => (
@@ -116,7 +123,7 @@ const Testimonials = () => {
                     </p>
                     <div className="flex items-center mt-4 space-x-4">
                       <img
-                      src={item.avatar}
+                        src={item.avatar}
                         alt=""
                         className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                       />

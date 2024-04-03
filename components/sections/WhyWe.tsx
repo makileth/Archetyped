@@ -48,7 +48,7 @@ const WhyWe = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <div className="w-full flex flex-col md:flex-row mb-2 md:mb-6">
-          <div className="flex flex-col w-full md:pb-0 pb-6 pl-6 md:w-[52%]">
+          <div className="flex flex-col w-full md:pb-0 pb-6 pl-2 md:w-[52%]">
             <SectionLabel labelText="Why Archetyped?" darkmode={false} />
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
               The only app your ideas need

@@ -1,7 +1,7 @@
 import React from "react";
 import SectionLabel from "../../ui/SectionLabel";
 import ReactDOM from "react-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useMouse from "@react-hook/mouse-position";
 import { motion, useTransform } from "framer-motion";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import {
   roleplayAcademyPosts,
   storytellingAcademyPosts,
 } from "../../../constants";
+
 const News = ({ mode }: { mode: string }) => {
   // State variables to manage cursor text and variant
   const [cursorText, setCursorText] = useState("");
@@ -86,6 +87,23 @@ const News = ({ mode }: { mode: string }) => {
     setCursorVariant("default");
   }
 
+  // Check if the screen size is desktop
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize(); // Check initial screen size
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -93,14 +111,16 @@ const News = ({ mode }: { mode: string }) => {
         mode === "news" ? "py-6" : "py-24"
       } px-4 overflow-hidden rounded-2xl py-24 lg:my-36`}
     >
-      <motion.div
-        variants={variants}
-        className="circle"
-        animate={cursorVariant}
-        transition={spring}
-      >
-        <span className="cursorText">{cursorText}</span>
-      </motion.div>
+      {isDesktop && (
+        <motion.div
+          variants={variants}
+          className="circle"
+          animate={cursorVariant}
+          transition={spring}
+        >
+          <span className="cursorText">{cursorText}</span>
+        </motion.div>
+      )}
       <div className="max-w-6xl pl-2 xl:pl-0 flex flex-col items-start mx-auto text-center mb-6">
         <SectionLabel labelText="Learning" darkmode={false} />
         <h2
@@ -121,7 +141,7 @@ const News = ({ mode }: { mode: string }) => {
         } rounded-2xl px-8 py-10 flex flex-row overflow-auto  `}
       >
         <Link
-          className="w-max group project hover:cursor-none dark:focus:outline-none px-2"
+          className="w-max group project md:hover:cursor-none dark:focus:outline-none px-2"
           href={characterAcademyPosts[characterAcademyPosts.length - 1].link}
           onMouseEnter={projectEnter}
           onMouseLeave={projectLeave}
@@ -163,7 +183,7 @@ const News = ({ mode }: { mode: string }) => {
           </div>
         </Link>
         <Link
-          className="w-max group project hover:cursor-none dark:focus:outline-none px-2"
+          className="w-max group project md:hover:cursor-none dark:focus:outline-none px-2"
           href={roleplayAcademyPosts[roleplayAcademyPosts.length - 1].link}
           onMouseEnter={projectEnter}
           onMouseLeave={projectLeave}
@@ -202,7 +222,7 @@ const News = ({ mode }: { mode: string }) => {
           </div>
         </Link>
         <Link
-          className="w-max group project hover:cursor-none dark:focus:outline-none px-2"
+          className="w-max group project md:hover:cursor-none dark:focus:outline-none px-2"
           href={
             storytellingAcademyPosts[storytellingAcademyPosts.length - 1].link
           }

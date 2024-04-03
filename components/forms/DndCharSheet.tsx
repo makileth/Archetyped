@@ -591,7 +591,7 @@ const DndCharSheet = ({
 
       <form
         action=""
-        className="relative flex flex-col w-screen md:w-full "
+        className={`relative flex flex-col w-screen md:w-full ${isReadOnly && "md:mt-0 mt-[8rem]"}`}
         onSubmit={handleSubmit}
       >
         <Image

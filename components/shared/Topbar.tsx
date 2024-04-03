@@ -36,12 +36,27 @@ import { usePathname } from "next/navigation";
 import ChooseTemplate from "../ui/ChooseTemplate";
 const navigation = [
   { name: "Menu", href: "/menu" },
-  { name: "Create a Character", href: "/create" },
-  { name: "Manage my Characters", href: "/manage" },
+  { name: "My characters", href: "/manage" },
   { name: "Academy", href: "/academy" },
 ];
 
 export function Topbar() {
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize(); // Check initial screen size
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const pathname = usePathname();
   const isAcademyPage = pathname.includes("/academy");
 
@@ -105,11 +120,11 @@ export function Topbar() {
           transform: isVisible ? "translateY(0)" : "translateY(-150%)",
         }}
       >
-        <NavigationMenuList className="">
-          <NavigationMenuItem className="cursor-pointer absolute lg:top-[0.35rem] left-[-2rem] lg:left-0">
+        <NavigationMenuList className="lg:pl-0 pl-6">
+          <NavigationMenuItem className="cursor-pointer absolute top-[0.65rem] lg:top-[0.65rem] left-[-2.75rem] lg:left-[-2.5rem]">
             <Link href="/" legacyBehavior passHref>
               <Image
-                className="w-3/5 h-3/5 lg:w-[70%] lg:h-[70%] mx-auto"
+                className=" w-[50%] h-[50%] mx-auto"
                 src="/assets/logo.svg"
                 width={125}
                 height={125}
@@ -135,7 +150,7 @@ export function Topbar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="duration-300 transition hover:bg-neutral-200 rounded-full h-[2rem] pl-4 pr-1.5 bg-transparent ">
+            <NavigationMenuTrigger className="duration-300 transition  hover:bg-neutral-200 rounded-full h-[2rem] pl-4 pr-1.5 bg-transparent ">
               Get started
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -289,7 +304,7 @@ export function Topbar() {
           </div>
         </nav>
       </div>
-      {isOpen && (
+      {isOpen && isDesktop == false && (
         <>
           <div className="fixed w-full h-full bg-neutral-900 opacity-50 z-[80] backdrop-blur-2xl" />
           <motion.div
@@ -300,9 +315,9 @@ export function Topbar() {
               stiffness: 260,
               damping: 20,
             }}
-            className="fixed top-3 left-[32.5%] sm:left-[65%] w-full z-[1000]  "
+            className="fixed top-3 left-[32.5%] sx:left-[52.5%] sm:left-[68%] w-full z-[1000]  "
           >
-            <div className="w-[65%] sm:w-[15rem] bg-white rounded-2xl">
+            <div className="w-[65%] sx:w-[45%] sm:w-[30%] bg-white rounded-2xl">
               <div className="flex items-center justify-between">
                 <a href="#" className="ml-4 mt-2">
                   <Link href="/">
@@ -326,16 +341,20 @@ export function Topbar() {
               </div>
               <div className="mt-6 flow-root">
                 <div className="w-full flex flex-col">
-                  <div className="space-y-2 mx-auto py-6">
+                  <div className="space-y-2 pl-8 items-start py-6">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        className="-mx-3 items-center flex bg-gradient-to-r from-transparent to-primary-200 rounded-2xl w-[95%] p-[0.035rem] text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
-                        {item.name}
+                        <p className="w-full py-[1rem] items-center bg-white p-2 rounded-2xl">
+                          {" "}
+                          {item.name}
+                        </p>
                       </a>
                     ))}
+                    {/* <ChooseTemplate page="mobileTopBar" /> */}
                   </div>
                   <div className="py-6 w-full flex">
                     {isSignedIn ? (
@@ -349,10 +368,10 @@ export function Topbar() {
                       </SignedIn>
                     ) : (
                       <Link
-                        className="px-4 py-2 bg-neutral-900 rounded-[10px] text-white"
+                        className="px-4 py-2 ml-4 bg-neutral-900 rounded-[10px] text-white"
                         href="/sign-in"
                       >
-                        <p>Sign in</p>
+                        <p>Join Beta</p>
                       </Link>
                     )}
                   </div>
