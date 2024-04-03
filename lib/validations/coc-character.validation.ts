@@ -18,9 +18,7 @@ const cocCharacterValidator = z.object({
   reasonToJoin: z.string().min(1, { message: "Reason to join is required." }),
   motherland: z.string().min(1, { message: "Motherland is required." }),
   fears: z.string().min(1, { message: "Fears are required." }),
-  habitsquirks: z.string().min(1, { message: "Habits/quirks are required." }),
-  voice: z.string().min(1, { message: "Voice is required." }),
-  conflict: z.string().min(1, { message: "Conflict is required." }),
+  voice: z.string().min(1, { message: "Voice is required." })
   // secret: z.string().min(1, { message: "Secret is required." }),
 });
 

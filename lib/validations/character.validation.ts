@@ -8,7 +8,6 @@ const CharacterValidator = z.object({
   height: z.string().min(1, { message: "Height is required." }),
   age: z.string().min(1, { message: "Age is required." }),
   weight: z.string().min(1, { message: "Weight is required." }),
-  ideal: z.string().min(1, { message: "Ideal is required." }),
   race: z.string().min(1, { message: "Race is required." }),
   backstory: z
     .string()
@@ -18,11 +17,8 @@ const CharacterValidator = z.object({
   reasonToJoin: z.string().min(1, { message: "Reason to join is required." }),
   motherland: z.string().min(1, { message: "Motherland is required." }),
   fears: z.string().min(1, { message: "Fears are required." }),
-  habitsquirks: z.string().min(1, { message: "Habits/quirks are required." }),
   voice: z.string().min(1, { message: "Voice is required." }),
   deity: z.string().min(1, { message: "Deity is required." }),
-  conflict: z.string().min(1, { message: "Conflict is required." }),
-  catchphrase: z.string().min(1, { message: "Catchphrase is required." }),
   // secret: z.string().min(1, { message: "Secret is required." }),
 });
 

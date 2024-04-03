@@ -833,7 +833,7 @@ const DndCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      ⚛️ Character's Concept
+                      ⚛️ Character's Concept*
                     </Label>
                     <ToolTip content={Tips.CharacterConcept} />
                   </div>
@@ -1029,7 +1029,7 @@ const DndCharSheet = ({
                     <div className="flex flex-col gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
                         <Label htmlFor="header" className="text-neutral-900 ">
-                          🔔 Voice
+                          🔔 Voice*
                         </Label>
                         <ToolTip content={Tips.Voice} />
                       </div>
@@ -1049,7 +1049,7 @@ const DndCharSheet = ({
                     <div className="flex flex-col gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
                         <Label htmlFor="header" className="text-neutral-900 ">
-                          🕌 Deity
+                          🕌 Deity*
                         </Label>
                         <ToolTip content={Tips.Deity} />
                       </div>
@@ -1122,7 +1122,7 @@ const DndCharSheet = ({
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-row gap-2">
                       <Label htmlFor="header" className="text-neutral-900 ">
-                        👺 Fears & Phobias
+                        👺 Fears & Phobias*
                       </Label>
                       <ToolTip content={Tips.Fears} />
                     </div>
@@ -1198,12 +1198,12 @@ const DndCharSheet = ({
               <div className="w-full md:w-1/2 bg-white py-2 md:py-4 h-full p-4 flex flex-col rounded-t-xl md:rounded-l-xl]">
                 <hr className="mb-[0.75rem] md:hidden block" />
                 <h1 className="text-neutral-900 text-2xl font-bold">
-                  Backstory
+                  Backstory*
                 </h1>
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🏞️ Motherland
+                      🏞️ Motherland*
                     </Label>
                   </div>
 
@@ -1254,7 +1254,7 @@ const DndCharSheet = ({
                 <div className="flex relative flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🎞️ Background
+                      🎞️ Background*
                     </Label>
                     <ToolTip content={Tips.Backstory} />
                   </div>
@@ -1290,7 +1290,7 @@ const DndCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      💫 My Goals & Motivations
+                      💫 My Goals & Motivations*
                     </Label>
                     <ToolTip content={Tips.GoalsMotivations} />
                   </div>
@@ -1313,7 +1313,7 @@ const DndCharSheet = ({
                 <div className="flex flex-col gap-2 pt-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🤝 Reason to join the team
+                      🤝 Reason to join the team*
                     </Label>
                     <ToolTip content={Tips.Reason} />
                   </div>

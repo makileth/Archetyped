@@ -824,7 +824,7 @@ const CocCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      ⚛️ Character's Concept
+                      ⚛️ Character's Concept*
                     </Label>
                     <ToolTip content={Tips.CharacterConcept} />
                   </div>
@@ -1020,7 +1020,7 @@ const CocCharSheet = ({
                     <div className="flex flex-col gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
                         <Label htmlFor="header" className="text-neutral-900 ">
-                          🔔 Voice
+                          🔔 Voice*
                         </Label>
                         <ToolTip content={Tips.Voice} />
                       </div>
@@ -1144,7 +1144,7 @@ const CocCharSheet = ({
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-row gap-2">
                       <Label htmlFor="header" className="text-neutral-900 ">
-                        👺 Fears & Phobias
+                        👺 Fears & Phobias*
                       </Label>
                       <ToolTip content={Tips.Fears} />
                     </div>
@@ -1227,7 +1227,7 @@ const CocCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🏞️ Motherland
+                      🏞️ Motherland*
                     </Label>
                   </div>
 
@@ -1252,7 +1252,7 @@ const CocCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      💼 Occupation
+                      💼 Occupation*
                     </Label>
                   </div>
 
@@ -1303,7 +1303,7 @@ const CocCharSheet = ({
                 <div className="flex relative flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🎞️ Background
+                      🎞️ Background*
                     </Label>
                     <ToolTip content={Tips.Backstory} />
                   </div>
@@ -1338,7 +1338,7 @@ const CocCharSheet = ({
                 <div className="flex flex-col gap-2 py-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      💫 My Goals & Motivations
+                      💫 My Goals & Motivations*
                     </Label>
                     <ToolTip content={Tips.GoalsMotivations} />
                   </div>
@@ -1361,7 +1361,7 @@ const CocCharSheet = ({
                 <div className="flex flex-col gap-2 pt-2">
                   <div className="flex flex-row gap-2">
                     <Label htmlFor="header" className="text-neutral-900 ">
-                      🤝 Reason to join the team
+                      🤝 Reason to join the team*
                     </Label>
                     <ToolTip content={Tips.Reason} />
                   </div>
