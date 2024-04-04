@@ -26,7 +26,7 @@ const Testimonials = () => {
     clamp: false,
   });
 
-  const y = useTransform(baseY, (v) => `${wrap(30, -110, v)}%`);
+  const y = useTransform(baseY, (v) => `${wrap(30, -117.5, v)}%`);
 
   const directionFactor = useRef<number>(1);
   const [newPosition, setNewPosition] = useState(null);

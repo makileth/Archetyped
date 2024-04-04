@@ -44,7 +44,7 @@ export function ToolTip({ content }: ToolTipProps) {
         <button
           onClick={toggleTooltip}
           type="button"
-          className="tooltip-trigger"
+          className={`tooltip-trigger`}
         >
           <Image
             alt="question mark"

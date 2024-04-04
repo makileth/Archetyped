@@ -339,9 +339,9 @@ export function Topbar() {
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              <div className="mt-6 flow-root">
+              <div className="mt-4 flow-root">
                 <div className="w-full flex flex-col">
-                  <div className="space-y-2 pl-8 items-start py-6">
+                  <div className="space-y-2 pl-8 items-start">
                     {navigation.map((item) => (
                       <a
                         key={item.name}

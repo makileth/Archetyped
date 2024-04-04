@@ -341,6 +341,51 @@ const CocCharSheet = ({
     }));
   };
 
+  const radioItems = [
+    {
+      value: "red",
+      id: "r1",
+      bgColor: "bg-red-500",
+      onClick: () => handleBackgroundColorClick("red-500"),
+    },
+    {
+      value: "blue",
+      id: "r2",
+      bgColor: "bg-blue-500",
+      onClick: () => handleBackgroundColorClick("blue-500"),
+    },
+    {
+      value: "green",
+      id: "r3",
+      bgColor: "bg-green-500",
+      onClick: () => handleBackgroundColorClick("green-500"),
+    },
+    {
+      value: "yellow",
+      id: "r4",
+      bgColor: "bg-yellow-500",
+      onClick: () => handleBackgroundColorClick("yellow-500"),
+    },
+    {
+      value: "pink",
+      id: "r5",
+      bgColor: "bg-pink-500",
+      onClick: () => handleBackgroundColorClick("pink-500"),
+    },
+    {
+      value: "violet",
+      id: "r6",
+      bgColor: "bg-[#B546FF]",
+      onClick: () => handleBackgroundColorClick("purple-500"),
+    },
+    {
+      value: "neutral-900",
+      id: "r7",
+      bgColor: "bg-neutral-900",
+      onClick: () => handleBackgroundColorClick("neutral-900"),
+    },
+  ];
+
   const [selectedColor, setSelectedColor] = useState("red-500");
 
   const [cocCharSheetInputs, setCocCharSheetInputs] =
@@ -531,55 +576,22 @@ const CocCharSheet = ({
           defaultValue="red"
           className="flex flex-row pt-[6rem] pb-[1rem] pl-2 md:pl-0"
         >
-          <RadioGroupItem
-            value="red"
-            id="r1"
-            className="bg-red-500 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("red-500")}
-          />
-          <RadioGroupItem
-            value="blue"
-            id="r2"
-            className="bg-blue-500 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("blue-500")}
-          />
-          <RadioGroupItem
-            value="green"
-            id="r3"
-            className="bg-green-500 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("green-500")}
-          />
-          <RadioGroupItem
-            value="yellow"
-            id="r4"
-            className="bg-yellow-500 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("yellow-500")}
-          />
-          <RadioGroupItem
-            value="pink"
-            id="r5"
-            className="bg-pink-500 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("pink-500")}
-          />
-          <RadioGroupItem
-            value="violet"
-            id="r6"
-            className="bg-[#B546FF] text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("purple-500")}
-          />
-          <RadioGroupItem
-            value="neutral-900"
-            id="r7"
-            className="bg-neutral-900 text-white border-transparent rounded-full"
-            onClick={() => handleBackgroundColorClick("neutral-900")}
-          />
+          {radioItems.map((item) => (
+            <RadioGroupItem
+              key={item.id}
+              value={item.value}
+              id={item.id}
+              className={`z-[10] border-transparent rounded-full ${item.bgColor} text-white`}
+              onClick={item.onClick}
+            />
+          ))}
         </RadioGroup>
       )}
 
       <form
         action=""
         className={`relative flex flex-col w-screen md:w-full ${
-          isReadOnly && "md:mt-0 mt-[8rem]"
+          isReadOnly && "md:pt-0 pt-[8rem]"
         }`}
         onSubmit={handleSubmit}
       >
@@ -824,9 +836,12 @@ const CocCharSheet = ({
                 <h1 className="text-neutral-900 text-2xl font-bold">
                   Personality
                 </h1>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       ⚛️ Character's Concept*
                     </Label>
                     <ToolTip content={Tips.CharacterConcept} />
@@ -850,15 +865,18 @@ const CocCharSheet = ({
                     readOnly={isReadOnly}
                   />
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px]"
+                    >
                       🎭 Traits*
                     </Label>
                     <ToolTip content={Tips.Traits} />
                   </div>
 
-                  <div className="flex flex-row overflow-x-auto md:max-w-[19.75rem] gap-2">
+                  <div className="flex flex-row mb-1 md:mb-0 overflow-x-auto md:max-w-[19.75rem] gap-2">
                     {" "}
                     {/* TODO: fix scroll and make a custom badge*/}
                     {traits.length > 0 ? (
@@ -936,15 +954,18 @@ const CocCharSheet = ({
                     )}
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 py-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       🌩️ Flaws*
                     </Label>
                     <ToolTip content={Tips.Flaws} />
                   </div>
 
-                  <div className="flex flex-shrink-0 flex-row  overflow-x-auto md:max-w-[19.75rem] gap-2">
+                  <div className="flex flex-shrink-0 flex-row mb-1 md:mb-0 overflow-x-auto md:max-w-[19.75rem] gap-1">
                     {" "}
                     {/* TODO: fix scroll */}
                     {flaws.length > 0 ? (
@@ -952,8 +973,8 @@ const CocCharSheet = ({
                         <div
                           key={fl.title}
                           className={`${
-                            !isReadOnly && "hover:bg-neutral-900"
-                          } rounded-full relative  group duration-300 transition  bg-red-500 px-2.5 py-[0.20rem] font-semibold flex items-center justify-center w-max text-white text-[0.80rem]`}
+                            !isReadOnly && "hover:bg-neutral-900 "
+                          } rounded-full relative  group duration-300 transition bg-red-500  px-2.5 py-[0.20rem] font-semibold flex items-center justify-center w-max text-white text-[0.80rem]`}
                           aria-label="badge text"
                           onClick={
                             isMobile
@@ -981,7 +1002,7 @@ const CocCharSheet = ({
                         </div>
                       ))
                     ) : (
-                      <p className="text-neutral-500 text-xs font-semibold">
+                      <p className="text-neutral-500 text-xs  font-semibold">
                         Add flaws below
                       </p>
                     )}
@@ -1020,9 +1041,12 @@ const CocCharSheet = ({
                     )}
                   </div>
                   <div className="flex flex-row w-full gap-2 overflow-x-auto">
-                    <div className="flex flex-col gap-2 py-2 text-neutral-900">
+                    <div className="flex flex-col gap-[0.125rem] md:gap-2 py-2 text-neutral-900">
                       <div className="flex flex-row gap-2">
-                        <Label htmlFor="header" className="text-neutral-900 ">
+                        <Label
+                          htmlFor="header"
+                          className="text-neutral-900 h-[16px] "
+                        >
                           🔔 Voice*
                         </Label>
                         <ToolTip content={Tips.Voice} />
@@ -1041,9 +1065,12 @@ const CocCharSheet = ({
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         🉐 Catchphrase
                       </Label>
                       <ToolTip content={Tips.CatchPhrase} />
@@ -1067,9 +1094,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2 py-2 text-neutral-900">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2 text-neutral-900">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         🕌 Religion
                       </Label>
                       <ToolTip content={Tips.Deity} />
@@ -1092,9 +1122,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2 pb-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         🧩 Hobbies & Interests
                       </Label>
                       <ToolTip content={Tips.Interests} />
@@ -1118,9 +1151,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2 pb-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         ✨ Habit/Quirk
                       </Label>
                       <ToolTip content={Tips.HabitsQuirks} />
@@ -1144,9 +1180,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         👺 Fears & Phobias*
                       </Label>
                       <ToolTip content={Tips.Fears} />
@@ -1170,9 +1209,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2 pt-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         🎇 Ideal
                       </Label>
                       <ToolTip content={Tips.Ideal} />
@@ -1196,9 +1238,12 @@ const CocCharSheet = ({
                       readOnly={isReadOnly}
                     />
                   </div>
-                  <div className="flex flex-col gap-2 pt-2">
+                  <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                     <div className="flex flex-row gap-2">
-                      <Label htmlFor="header" className="text-neutral-900 ">
+                      <Label
+                        htmlFor="header"
+                        className="text-neutral-900 h-[16px] "
+                      >
                         🤫 Secret
                       </Label>
                       <ToolTip content={Tips.Secret} />
@@ -1231,9 +1276,12 @@ const CocCharSheet = ({
                 <h1 className="text-neutral-900 text-2xl font-bold">
                   Backstory
                 </h1>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       🏞️ Motherland*
                     </Label>
                   </div>
@@ -1256,9 +1304,12 @@ const CocCharSheet = ({
                     readOnly={isReadOnly}
                   />
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       💼 Occupation*
                     </Label>
                   </div>
@@ -1281,9 +1332,12 @@ const CocCharSheet = ({
                     readOnly={isReadOnly}
                   />
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       ⚡ Conflict
                     </Label>
                     <ToolTip content={Tips.Conflict} />
@@ -1307,16 +1361,19 @@ const CocCharSheet = ({
                     readOnly={isReadOnly}
                   />
                 </div>
-                <div className="flex relative flex-col gap-2 py-2">
+                <div className="flex relative flex-col gap-[0.125rem] md:gap-2 pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       🎞️ Background*
                     </Label>
                     <ToolTip content={Tips.Backstory} />
                   </div>
 
                   <Textarea
-                    className={`rounded-[15px] border-[1px] h-[21.9rem] md:h-[25.2rem] px-3 py-2 border-gray-400  text-[12px] text-neutral-900 ${
+                    className={`rounded-[15px] border-[1px] h-[21.9rem] md:h-[27.5rem] px-3 py-2 border-gray-400  text-[12px] text-neutral-900 ${
                       validationErrors.backstory ? "error-border" : ""
                     }`}
                     value={cocCharSheetInputs?.backstory}
@@ -1342,9 +1399,12 @@ const CocCharSheet = ({
                     {cocCharSheetInputs?.backstory?.length}/4000
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 py-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       💫 My Goals & Motivations*
                     </Label>
                     <ToolTip content={Tips.GoalsMotivations} />
@@ -1365,9 +1425,12 @@ const CocCharSheet = ({
                   />
                 </div>
 
-                <div className="flex flex-col gap-2 pt-2">
+                <div className="flex flex-col gap-[0.125rem] md:gap-2 pt-2">
                   <div className="flex flex-row gap-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[16px] "
+                    >
                       🤝 Reason to join the team*
                     </Label>
                     <ToolTip content={Tips.Reason} />
@@ -1405,8 +1468,11 @@ const CocCharSheet = ({
               <hr className="md:block hidden " />
               <div className="flex flex-col md:flex-row items-center md:gap-8 justify-between">
                 <div className="flex flex-col py-2 w-full md:w-1/2">
-                  <div className="flex relative flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                  <div className="flex relative flex-col gap-[0.125rem] md:gap-2 pt-2">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       👨‍👩‍👧‍👦 Family
                     </Label>
 
@@ -1435,8 +1501,11 @@ const CocCharSheet = ({
                       {cocCharSheetInputs?.family?.length}/1000
                     </p>
                   </div>
-                  <div className="flex flex-col relative gap-2 py-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                  <div className="flex flex-col relative gap-[0.125rem] md:gap-2 pt-2">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       🧑‍🤝‍🧑 NPCs
                     </Label>
 
@@ -1467,8 +1536,11 @@ const CocCharSheet = ({
                   </div>
                 </div>
                 <div className="flex flex-col py-2 w-full md:w-1/2">
-                  <div className="flex relative flex-col gap-2 py-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                  <div className="flex relative flex-col gap-[0.125rem] md:gap-2 pt-2">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       👯 PCs
                     </Label>
 
@@ -1497,8 +1569,11 @@ const CocCharSheet = ({
                       {cocCharSheetInputs?.playerPCs?.length}/1000
                     </p>
                   </div>
-                  <div className="flex flex-col relative gap-2 py-2">
-                    <Label htmlFor="header" className="text-neutral-900 ">
+                  <div className="flex flex-col relative gap-[0.125rem] md:gap-2 pt-2">
+                    <Label
+                      htmlFor="header"
+                      className="text-neutral-900 h-[24px] "
+                    >
                       🚩 Organisations
                     </Label>
 
