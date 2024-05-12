@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 export default function Component() {
   return (
     <div className="min-h-[100vh] text-neutral-900 py-16 md:py-36 overflow-hidden">
-      <div className="grid max-w-3xl gap-6 px-4 py-6 mx-auto sm:grid-cols-2 sm:gap-8 md:px-6 lg:gap-10">
-        <div className="space-y-2 flex flex-col">
+      <div className="grid max-w-3xl gap-6 px-4 py-6 mx-auto sm:grid-cols-2 sm:gap-8 md:px-6 lg:gap-6">
+        <div className="gap-3 flex flex-col">
           <h1 className="text-3xl text-neutral-900 font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Changelog
           </h1>
@@ -15,14 +15,14 @@ export default function Component() {
           </p>
         </div>
 
-        <div className="space-y-6 sm:col-start-1 sm:col-span-2">
+        <div className="space-y-4 sm:col-start-1 sm:col-span-2">
           <div className="flex items-center gap-4">
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col items-start gap-2">
               <h2 className="text-2xl font-bold tracking-tighter">
                 1.0.0 Beta
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Released on August 15, 2023
+                Released on April 3, 2024
               </p>
             </div>
           </div>

@@ -132,19 +132,6 @@ const DndCharSheet = ({
 
   const isMobile = window.innerWidth <= 768;
 
-  const { data: chars } = useQuery<dndCharSheetInputs[]>({
-    queryKey: ["chars"],
-    queryFn: () => {
-      // Check if paramsId is provided
-      if (paramsId) {
-        // Call getData with paramsId
-        return getData(paramsId);
-      }
-      // If paramsId is not provided, return a resolved promise with an empty array
-      return Promise.resolve([]);
-    },
-  });
-
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>(
     {}
   );
@@ -1178,6 +1165,7 @@ const DndCharSheet = ({
                           ? "error-border rounded-full"
                           : ""
                       }`}
+                      value={dndCharSheetInputs?.ideal}
                       name="ideal"
                       onChange={handleChangedndCharSheetInputs}
                       onKeyDown={(e) => {
@@ -1199,6 +1187,7 @@ const DndCharSheet = ({
                       type="text"
                       placeholder="Had an affair with a minor character"
                       className="rounded-full border-gray-400  focus:outline-none"
+                      value={dndCharSheetInputs?.secret}
                       name="secret"
                       onChange={handleChangedndCharSheetInputs}
                       onKeyDown={(e) => {
