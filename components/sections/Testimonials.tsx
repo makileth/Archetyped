@@ -58,19 +58,19 @@ const Testimonials = () => {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus convallis tellus a accumsan. Quisque et pulvinar nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus convallis tellus a accumsan. Quisque et pulvinar nulla.",
       name: "John Doe",
       occupation: "Happy D&D Player",
-      avatar: "https://source.unsplash.com/50x50/?portrait?1",
+      avatar: "https://i.pinimg.com/564x/49/7d/36/497d366b9d8f08b07bd5bb582ba4c35d.jpg",
     },
     {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus convallis tellus a accumsan. Quisque et pulvinar nulla. Integer fermentum justo eu lacinia placerat. Fusce dictum, orci non vestibulum mattis, lectus lectus tincidunt augue, id vestibulum dui ante non nibh.",
       name: "Jane Smith",
       occupation: "DM Veteran",
-      avatar: "https://source.unsplash.com/50x50/?portrait?2",
+      avatar: "https://i.pinimg.com/564x/e0/77/64/e07764824ab9edca805c96f613157f84.jpg",
     },
     {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin maximus convallis tellus a accumsan. Quisque et pulvinar nulla. Vivamus id augue a nisi ultrices feugiat ac in ligula. Nulla facilisi. Maecenas dignissim turpis ut purus consectetur suscipit.",
       name: "David Johnson",
       occupation: "Fan of TTRPGs",
-      avatar: "https://source.unsplash.com/50x50/?portrait?3",
+      avatar: "https://i.pinimg.com/736x/47/81/ad/4781ad4bb7d6387f13d67ba2eb366e0d.jpg",
     },
   ];
 
@@ -125,7 +125,7 @@ const Testimonials = () => {
                       <img
                         src={item.avatar}
                         alt=""
-                        className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                        className="w-12 h-12 bg-center object-cover rounded-full dark:bg-gray-500"
                       />
                       <div>
                         <p className="text-lg font-semibold">{item.name}</p>
